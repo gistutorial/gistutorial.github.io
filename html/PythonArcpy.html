@@ -1,0 +1,210 @@
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+	<div class = "container">
+		<div class = "row top-padding" id = "link_top">
+	  	<nav class="col-sm-3" id="myScrollspy">
+	        <ul class="nav nav-pills nav-stacked">
+	        	<div class = "panel-group">
+		        	<div class="panel-heading">
+		        		<h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/PythonArcpy#collapse1" class="list-group-item active">Dataset Properties</a>
+					     </h1>
+					     <div id="collapse1" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<li><a class="text-black list-group-item" href="#/blog/ArcpyPython#101_properties"><b>Import</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/ArcpyPython#desc-func"><b>Describe Function</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/ArcpyPython#spatial-reference"><b>Spatial Reference</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/ArcpyPython#pcs-name"><b>PCS Name</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/ArcpyPython#gcs-name"><b>GCSName</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/ArcpyPython#dataset-extent"><b>Dataset Extent</b></a></li>
+				        </ul>
+				    </div>
+
+					    <h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/PythonArcpy#collapse2" class="list-group-item active">Geoprocessing</a>
+					     </h1>
+					     <div id="collapse2" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonArcpy/101-geoprocessing#101-geoprocessing"><b>Getting Started</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonArcpy/101-geoprocessing#import-define"><b>Import & Define</b></a></li>
+	              			<li><a  class="text-black list-group-item" href="#/blog/PythonArcpy/101-geoprocessing#define-projection">Define Projection</a></li>
+	              			<li><a  class="text-black list-group-item" href="#/blog/PythonArcpy/101-geoprocessing#buffer-analysis">Buffer Analysis</a></li>
+	              			<li><a  class="text-black list-group-item" href="#/blog/PythonArcpy/101-geoprocessing#clip-analysis">Clip Analysis</a></li>
+	              			<li><a  class="text-black list-group-item" href="#/blog/PythonArcpy/101-geoprocessing#get-count">Get Count</a></li>
+	              			<li><a  class="text-black list-group-item" href="#/blog/PythonArcpy/101-geoprocessing#get-output">Get Output</a></li>
+	              			<li><a  class="text-black list-group-item" href="#/blog/PythonArcpy/101-geoprocessing#results">Results</a></li>
+				        </ul>
+	        			</div>
+	        		</div>
+			    </div>
+    		</ul>
+	     </nav>
+
+
+	    <div class="col-sm-9"> <!-- begin page content -->
+
+	    	<div class = "top-padding" id="101_properties">
+				<div class = "row bottom-margin">
+					<div class="panel panel-default">
+				  		<div class="panel-heading primary-color">
+				  			<h1>Arcpy 101: Exploring Dataset Properties</h1>
+				  		</div>
+				  		<div class="panel-body">
+				  			<p class = "lead"> A beginners guide that will help you explore the properties of the data you are working with including: <b>dataset type, feature type, shape type, projection name, and dataset extent </b>
+							</p>
+							<div class = "col-sm-12" id = "import">
+								<br><br>
+								<p class = "lead"><h3>IMPORT:</h3> Arcpy library </p>
+								
+								<code class="prettyprint"> 
+									import arcpy
+								</code>
+							</div>
+							<div class = "col-sm-12" id = "desc-func">
+								<br><br>
+								<p class = "lead"><h3>DESCRIBE FUNCTION:</h3> Return the name, data type, fields, indexes and save it as a variable "desc_file" </p>
+								<code class="prettyprint">
+									desc_file = arcpy.Describe (path + "filename.shp") <br>
+									print "File Name: " + desc_file.name  <br>
+									print "Dataset Type: " + desc_file.datasetType <br>
+									print "Feature type: " + desc_file.featureType <br>
+									print "Shape Type: " + desc_file.shapeType <br>
+								</code>
+							</div>
+							<div class = "col-sm-12" id = "spatial-reference">
+								<br><br>
+
+								<p class = "lead">
+									<h3>SPATIAL REFERENCE:</h3> Return properties of the .prj file and assign to "sr_file" 
+								</p>
+								<code class="prettyprint">
+									sr_file = desc_file.spatialReference
+								</code>
+							</div>
+							<div class = "col-sm-12" id = "pcs-name">
+								<br><br>
+
+								<p class = "lead"><h3>PCSName:</h3> Return properties for projected coordinate systems</p>
+								<code class="prettyprint">
+									print "Projection name:" + sr_file.PCSName
+								</code>
+							</div>
+							<div class = "col-sm-12" id = "gcs-name">
+								<br><br>
+
+								<p class = "lead"><h3>GCSName:</h3> Return properties for geographic coordinate systems</p>
+								<code class="prettyprint">
+									print "Projection name:" + sr_file.GCSName
+								</code>
+							</div>
+							<div class = "col-sm-12" id = "dataset-extent">
+								<br><br>
+
+								<p class = "lead"> <h3>Dataset Extent:</h3> Return (Xmin, Xmax, Ymin, Ymax) </p>
+								<code class="prettyprint">
+									print("Dataset Extent:{0}, {1}, {2}, {3}".format(
+									        desc_file.extent.XMin, desc_file.extent.XMax,desc_file.extent.YMin, desc_file.extent.YMax))
+								</code>
+							</div>
+
+							</div>
+						</div>
+						<div ng-include src="'/partials/backtotop.html'"></div>
+					</div>
+				</div>
+
+			<div class = "top-padding" id="101-geoprocessing">
+				<div class = "row bottom-margin">
+					<div class="panel panel-default">
+					  <div class="panel-heading primary-color">
+					  	<h1>Arcpy 101: Geoprocessing Tools</h1>
+					  </div>
+					  <div class="panel-body">
+					  	<div class = "col-sm-12">
+					  		<p class = "lead">Sample code to use arcpy library tools such as define projection, buffer, and clip to analyze spatial attributes. For example, if you had a land feature shapefile ("landFeature.shp") and fire ignitions shapefile ("fireFile.shp"), you can create a 1km buffer zone for each landfeature that represent human accessibility to identify fires nearby urban areas.</p>
+
+					  	<div class = "col-sm-12" id = "import-define">
+					  			<br><br>
+						  	
+						  	<p class = "lead"><h3>IMPORT & DEFINE:</h3> Arcpy library; define your path </p>
+							<code class="prettyprint"> 
+								import arcpy <br>
+								path = "C:/User/..."
+							</code>
+						</div>
+						<div class = "col-sm-12" id = "define-projection">
+							<br><br>
+
+							<p class = "lead"><h3>DEFINE PROJECTION:</h3> Make sure all of your files are in the same projection. If your landFeature shapefile's projection are unknown, change to the same projection as a sample file "fireFile.shp", otherwise we assume the projection is WGS and change it to NAD. </p> 
+							<code class="prettyprint"> 
+								if arcpy.Describe(path + "landFeature.shp").spatialReference.Name == 'Unknown': <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;arcpy.DefineProjection_management(path + "landFeature.shp", path + "fireFile.shp") <br>
+								else:	<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;arcpy.Project_management(path + "landFeature.shp", path + "newfilename.shp", "WGS_1984_(ITRF00)_To_NAD_1983") 
+							</code>
+							
+							<br>
+							<br>
+							
+							<p class = "lead">Check if this worked:</p>
+							<code class="prettyprint"> 
+								print arcpy.Describe(path + "landFeature.shp").spatialReference.Name
+							</code>
+							</div>
+						<div class = "col-sm-12" id = "buffer-analysis">
+							<br><br>
+
+							<p class = "lead"><h3>BUFFER ANALYSIS:</h3> Creates buffer polygons around land features to a specified distance, 1000 meters or 1 kilometer. 
+							<h4>PARAMETERS:</h4> Buffer_analysis (input features, output feature class, distance specify in meters/feet/etc., {FULL/LEFT/RIGHT/OUTSIDE_ONLY}, {ROUND/FLAT}, {NONE/ALL/LIST}, {dissolve_field})</p>
+							<code class="prettyprint"> 
+								arcpy.Buffer_analysis (path + "landFeature.shp", path + "newBuffFile.shp", "1000", "FULL", "ROUND","ALL") 
+							</code>
+						</div>
+						<div class = "col-sm-12" id = "clip-analysis">
+							<br><br>
+							
+							<p class = "lead"> <h3>CLIP ANALYSIS:</h3> Useful to extract attributes of an area of interest or input feature that overlay the clip features. In this case, clip together the buffered land feature file with fireFile.
+							<h4>PARAMETERS:</h4> Clip_analysis (input features, clip features, output feature class, {cluster_tolerance}) </p>
+							<code class="prettyprint"> 
+								clipFile = arcpy.Clip_analysis(path + "newBuffFile.shp", path + "fireFile.shp", path + "newClipFile.shp")
+							</code>
+						</div>
+						<div class = "col-sm-12" id = "get-count">
+							<br><br>
+
+							<p class = "lead"><h3> GET COUNT:</h3> Returns the total number of rows for a feature class, table, layer, or raster. In this case, count the number of files in the clip output file.
+							<h4>PARAMETERS:</h4> GetCount_management(input file or raster)</p>
+							<code class="prettyprint"> 
+								result = arcpy.GetCount_management(clipFile)
+							</code>
+						</div>
+						<div class = "col-sm-12" id = "get-output">
+							<br><br>
+
+							<p class = "lead"><h3>GET OUTPUT:</h3> Assigning results to number_Fires as an actual number</p>
+							<code class="prettyprint"> 
+								number_Fires = result.getOutput(0) 
+							</code>
+						</div>
+						<div class = "col-sm-12" id = "results">
+							<br><br>
+
+							<p class = "lead"> <h3> RESULTS: </h3> Return results in String </p>
+							<code class="prettyprint"> 
+								print "There were" + number_Fires + "fires in 1km buffer zones of urban area."
+							</code>
+						</div>
+					 
+						<div class = "col-sm-4">
+						 	<div class = "thumbnail">
+				  				<img src="images/buffers.png" alt="buffer">
+				  			</div>
+				  		</div>
+				  	</div>
+				  </div>
+				</div>
+				<div ng-include src="'/partials/backtotop.html'"></div>
+			</div>
+
+		</div>			
+	</div>
+</body>

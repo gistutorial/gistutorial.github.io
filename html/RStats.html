@@ -1,0 +1,148 @@
+<div class = "container">
+	<div class = "row top-padding" id = "link_top">
+		<nav class="col-sm-3" id="myScrollspy">
+			<ul class="nav nav-pills nav-stacked">
+				<div class = "panel-group">
+					<div class="panel-heading">
+						<h1 class="panel-title">
+							<a data-toggle="collapse" href="#/blog/RStats#collapse1" class="list-group-item active">Exploring R</a>
+						</h1>
+						<div id="collapse1" class="panel-collapse collapsing">
+							<ul class="list-group">
+								<li><a class="text-black list-group-item" href="#/blog/RStats/r-basics#math-operations"><b>Mathematical Operations</b></a></li>
+								<li><a class="text-black list-group-item" href="#/blog/RStats/r-basics#collection-numbers"><b>Collection of Numbers</b></a></li>
+								<li><a class="text-black list-group-item" href="#/blog/RStats/r-basics#vectors"><b>Vectors</b></a></li>
+								<li><a class="text-black list-group-item" href="#/blog/RStats/r-basics#lists"><b>Lists</b></a></li>
+								<li><a class="text-black list-group-item" href="#/blog/RStats/r-basics#data-frames"><b>Data Frames</b></a></li>
+
+							</ul>
+						</div>
+						<h1 class="panel-title">
+							<a data-toggle="collapse" href="#/blog/RStats#collapse2" class="list-group-item active">Confidence Interval</a>
+						</h1>
+						<div id="collapse2" class="panel-collapse collapsing">
+							<ul class="list-group">
+								<li><a class="text-black list-group-item" href="#/blog/RStats/conf-interval#normal-distribution"><b>Normal Distribution</b></a></li>
+								<li><a class="text-black list-group-item" href="#/blog/RStats/conf-interval#t-distribution"><b>T Distribution</b></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</ul>
+		</nav>
+
+		<div class="col-sm-9"> <!-- begin page content -->
+
+			<div class="tutorial-markdown" id="r_basics">
+				<h1>STATS 101: Exploring R Basics</h1>
+				<hr>
+				<div id = "math-operations">
+					<h3>MATHEMATICAL OPERATIONS:</h3>
+					<p class = "lead"> An algebraic expression with numbers and operations such as addition, subtraction, multiplication, exponents, and roots can be expressed and stored in a variable.</p>
+          <pre class="prettyprint">
+            4 + 5 * 18
+            x <- 4 + 5 * 18
+            5 - 3 / 12 --> x
+            x <- sqrt(36)</pre>
+
+
+				</div>
+				<div id = "collection-numbers">
+					<h3> COLLECTION OF NUMBERS: </h3>
+					<p class = "lead"> ":" means all integers from 1 to 50. "; z" this allows the result of z to be printed automatically. </p>
+					<pre class = "prettyprint">
+           z <- 1:50; z</pre>
+				</div>
+				<div id = "collection-numbers">
+					<h3> COLLECTION OF NUMBERS: </h3>
+					<p class = "lead"> ":" means all integers from 1 to 50. "; z" this allows the result of z to be printed automatically. </p>
+					<pre class = "prettyprint">
+            z <- 1:50; z</pre>
+
+				</div>
+
+				<div id = "vectors">
+					<h3>VECTORS: </h3>
+					<p class = "lead"> A collection of symbols, text, or numbers. Use the "c" command, or "scan" command to easily enter data in vector format.</p>
+					<pre class = "prettyprint">
+            x <- c(3, 6, 8)
+            z <- scan() # enter the data for n numbers of data @ 1:, 2:, 3:....n:, etc.</pre>
+				</div>
+
+				<div id = "lists">
+					<h3>LISTS: </h3>
+					<p class = "lead"> A collection of objects that can be different types (string, int, etc). </p>
+					<pre class = "prettyprint">
+            myList <- list(name = "John", Lname = "Joe", age= 65)</pre>
+
+					<p class = "lead"> Access the list using index or "$". </p>
+
+					<pre class = "prettyprint">
+            myList[3]
+            # same as:
+            myList$age</pre>
+				</div>
+
+				<div id = "data-frames">
+					<h3> DATA FRAMES: </h3>
+					<p class = "lead"> Similar to a table of numbers and strings, essentially made up of objects. Note: need to have same number of objects. </p>
+					<pre class = "prettyprint">
+            x <- c(1, 2, 3, 4, 5, 6)
+            y <- c("a", "b", "c", "d", "e", "f")
+            xy <- data.frame(numbers=x,letters=y)</pre>
+
+					<p class = "lead"> Access each object by index or $. Access element by [row,column] </p>
+					<pre class = "prettyprint">
+            xy[3]
+            xy[2]
+            xy$numbers
+            xy[1,4]</pre>
+				</div>
+
+
+
+
+
+				<div id="conf_interval">
+					<h1>STATS 101: Confidence Intervals</h1>
+					<hr>
+					<div id = "normal-distribution">
+						<h2> Normal Distribution: </h2>
+						<p class = "lead"> Finding the Confidence Interval (CI) for a normal distribution dataset with a sample mean (xbar) of 7, standard deviation (s) of 1.3, and sample size (n) of 50, using a 95% Confidence Level. </p>
+            <pre class = "prettyprint">
+              xbar <- 7
+              s <- 1.3
+              n <- 50
+              # Z value * standard error
+              error <- qnorm(0.975)*s/sqrt(n)
+              #Lower Bound of CI
+              left <- xbar - error
+              #Upper Bound of CI
+              right <- xbar + error
+              # Population mean within interval (left, right)</pre>
+					</div>
+					<div id = "t-distribution">
+						<h2> T Distribution n < 30: </h2>
+						<p class = "lead"> Finding the Confidence Interval (CI) a sample size less than 30, with a mean (xbar) of 10, standard deviation (s) of 2 and sample size (n) of 15, using a 95% Confidence Level. </p>
+						<pre class = "prettyprint">
+              xbar <- 10
+              s <- 2
+              n <- 15
+              # Z value * standard error
+              error <- qt(0.975, df=n-1)*s/sqrt(n)
+              #Lower Bound of CI
+              left <- xbar - error
+              #Upper Bound of CI
+              right <- xbar + error
+              # Population mean within interval (left, right)</pre>
+					</div>
+
+
+					<div class = " bottom-margin">
+						<div ng-include src="'/partials/backtotop.html'"></div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>

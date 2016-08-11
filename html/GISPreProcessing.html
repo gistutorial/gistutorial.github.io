@@ -1,0 +1,455 @@
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+	<div class = "container">
+		<div class = "row top-padding" id = "link_top">
+	  	<nav class="col-sm-3" id="myScrollspy">
+	        <ul class="nav nav-pills nav-stacked">
+	        	<div class = "panel-group">
+		        	<div class="panel-heading">
+		        		<h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/GISPreProcessing#collapse1" class="list-group-item active">TOA Correction</a>
+					     </h1>
+					     <div id="collapse1" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/TOA-Correction#intro"><b>Introduction</b></a></li>
+				        	<li><a data-toggle = "collapse" class="text-black list-group-item" href="#/blog/GISPreProcessing/TOA-Correction#collapse1a"><b>Landsat 4-5 TM & 7 ETM+</b></a></li>
+				        	<div id="collapse1a" class="panel-collapse collapsing">
+				        		 <ul class="list-group">
+					        		<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/TOA-Correction#Landsat5"><b>DN to Radiance</b></a></li>
+					        		<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/TOA-Correction#5-ref"><b>Radiance to Reflectance</b></a></li>
+				        		</ul>
+				        	</div>
+	              			<li><a  data-toggle = "collapse" class="text-black list-group-item" href="#/blog/GISPreProcessing/TOA-Correction#collapse1b">Landsat 8</a></li>
+	              			<div id="collapse1b" class="panel-collapse collapsing">
+					        		 <ul class="list-group">
+						        		<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/TOA-Correction#Landsat8"><b>DN to Radiance</b></a></li>
+						        		<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/TOA-Correction#8-ref"><b>Radiance to Reflectance</b></a></li>
+				        			</ul>
+				        		</div>
+				        </ul>
+				    </div>
+					     <h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/GISPreProcessing#collapse2" class="list-group-item active">Cloud Masking</a>
+					     </h1>
+					     <div id="collapse2" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/cloud-masking#getting-started"><b>Getting Started</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/cloud-masking#step1"><b>Step 1: IsoCluster Classification</b></a></li>
+	              			<li><a  class="text-black list-group-item" href="#/blog/GISPreProcessing/cloud-masking#step2">Step 2: Extract by Attribute</a></li>
+	              			<li><a  class="text-black list-group-item" href="#/blog/GISPreProcessing/cloud-masking#step3">Step 3: Extract by Mask</a></li>
+				        </ul>
+	        			</div>
+	        			<h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/GISPreProcessing#collapse3" class="list-group-item active">TIRS to Temperature</a>
+					     </h1>
+					     <div id="collapse3" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<h1 class="panel-title">
+				        	<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/TIRS-Thermal#TIRS-getting-started"><b>Getting Started</b></a></li>
+				        	<li><a data-toggle="collapse" class="text-black list-group-item" href="#/blog/TIRS-Thermal#collapse3a">Landsat 8</a></li>
+					     		</h1>
+					     	<div id="collapse3a" class="panel-collapse collapsing">
+					        <ul class="list-group">
+					        	<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/TIRS-Thermal#TIRS-landsat8"><b>Introduction</b></a></li>
+					        	<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/TIRS-Thermal#TIRS-radiance"><b>DN to Spectral Radiance</b></a></li>
+					        	<li><a class="text-black list-group-item" href="#/blog/GISPreProcessing/TIRS-Thermal#TIRS-temperature"><b>Radiance to Brightness Temperature</b></a></li>
+					        </ul>
+				        </ul>
+	              	<!--<li><a  class="text-black list-group-item" href="#/blog/GISPreProcessing/TIRS-Thermal#TIRS-landsat5">Landsat 5</a></li>		-->
+				        
+	        			</div>
+	        		</div>
+	        	</div>
+    		</ul>
+	     </nav>
+
+
+	    <div class="col-sm-9"> <!-- begin page content -->
+
+	      <div class="top-padding" id="TOA-Correction">
+	        <div class="row bottom-margin">
+	          <div class="panel panel-default">
+	            <div class="panel-heading primary-color">
+	              <h1> TOA ATMOSPHERIC CORRECTION</h1> 
+	            </div>
+	            <div class = "panel-body">
+	              <div class = "row">
+	                <div class = "col-sm-12">
+	                    <div class = "thumbnail no-border">
+	                      <img src="images/Bfr_Aft.jpg" alt="TOA">
+	                    </div>
+	                  </div>
+	                  <div class = "col-sm-12" id = "intro">
+	                  	<br><br>
+	                    <h1>INTRO:</h1> 
+	                    <p class = "lead"> Atmospheric correction techniques allows for the transformation of Digital Numbers (DN) to Radiance and then to Reflectance values in order to reduce sensor discrepancies and atmospheric effects. This pre-processing step can help to reduce errors and increase accuracy in final processing steps such as classification. In this section we will go over how to convert DN values to Sensor Spectral Radiance and then to Top of Atmosphere (TOA) Reflectance. Also, the best way to go about each step is to create a table on excel for each of the bands, except for the thermal bands with each corresponding variables to keep track of data.<br><br> Another great source is the USGS Landsat 7 handbook guide, <a href="http://landsathandbook.gsfc.nasa.gov/data_prod/prog_sect11_3.html">available here</a> or the USGS Landsat 8 handbook guide, <a href="https://landsat.usgs.gov/documents/Landsat8DataUsersHandbook.pdf">available here</a>.</p>
+
+
+	                <div class = "col-sm-12" id = "Landsat5">
+	                	<hr width = 15%>
+	                    <h1> <b>LANDSAT 4-5 TM & 7 ETM+ </b></h1>
+	                    <br>
+	              
+	                    <h2> DN TO RADIANCE </h2> 
+	                    <div class="panel panel-default">
+	                      <div class="panel-heading primary-color">
+	                        <h3> Lλ = ((Lmaxλ - Lminλ)/(Qcalmax - Qcalmin)) * (Qcal - Qcalmin) + Lminλ </h3> 
+	                      </div>
+	                      <div class = "panel-body">
+	                        <div class = "col-sm-12">
+	                          <p style="font-size:15px"> 
+	                            <b>Lλ</b> = Spectral Radiance in watts/(meter squared * ster * μm) <br><br>
+	                            <b>Qcal</b> = DN values for each band <br><br>
+	                            <b>Lminλ</b>  = the spectral radiance that is scaled to QCALMIN in watts/(meter squared * ster * μm) Found in table below <br> <br>
+	                            <b>Lmaxλ</b>  = the spectral radiance that is scaled to QCALMAX in watts/(meter squared * ster * μm) Found in table below <br> <br>
+	                            <b>Qcalmin </b>= the minimum quantized calibrated pixel value for each band, usually 1. (Found in the MetaData of the image) <br><br>
+	                            <b>Qcalmax</b> = the maximum quantized calibrated pixel value for each band, usually 255. Found in the MetaData of the image) 
+	                          </p>
+	                        </div>
+	                      </div> 
+	                  </div>
+
+	                    <br><br>
+	                    <h3> LMINλ & LMAXλ </h3> 
+	                    <div class = "col-sm-12">
+	                      <div class = "thumbnail no-border">
+	                        <img src="images/TOA/radiance_table.PNG" alt="TOA">
+	                        
+	                        <p style = "font-size: 15px"> <a href="http://cegis.usgs.gov/soil_moisture/pdf/A%20Straight%20Forward%20guide%20for%20Processing%20Radiance%20and%20Reflectance_V_24Jul12.pdf">SOURCE:</a> 
+	                          Michael P. Finn1 , Matthew D. Reed2 , and Kristina H. Yamamoto. "A Straight Forward Guide for Processing Radiance and Reflectance for EO-1 ALI, Landsat 5 TM, Landsat 7 ETM+, and ASTER" 
+	                        </p>
+
+	                      </div>
+	                    </div>
+
+	                    <br><br>
+	                    <h3> Raster Calculation </h3> 
+	                    <div class = "col-sm-12">
+	                      <div class = "thumbnail no-border">
+	                        <img src="images/TOA/L05_IMG/2005/L05_raster_calc_rad.PNG" alt="TOA">
+	                      </div>
+	                      <p> Plug in the equation into the "raster Calculator" tool as seen above, which can be accessed by using the search tab on the very rightside of ArcMap. For the "QCAL" values plug in the raster file for all the bands 1-5 & 7 (Except for the thermal 6 band).</p>
+	                    </div>
+	                    
+
+	                   <div class = "col-sm-12" id="5-ref">
+	                   	  <hr width = 15%>
+
+	                    <h2> RADIANCE TO REFLECTANCE<h2> 
+	                    
+	                      <div class = "col-sm-12">
+	                        <div class = "thumbnail no-border">
+	                          <img src="images/TOA/rad_to_ref_eq.PNG" alt="TOA">
+
+	                          <br>
+
+	                          <p style = "font-size: 15px"> <a href="http://landsathandbook.gsfc.nasa.gov/data_prod/prog_sect11_3.html">SOURCE:</a> USGS Website
+	                        </div>
+	                      </div>
+
+	                      <br><br>
+
+	                      <h3> ESUN = IRRADIANCE </h3> 
+	                      <p> The irradiance values are provided here:
+	                      </p>
+
+	                      <div class = "thumbnail no-border">
+	                          <img src="images/TOA/Irradiance.PNG" alt="TOA">
+	                        </div>
+
+	                      <br><br>
+
+	                      <h3> Solar Zenith Angle (Theta_S) </h3> 
+	                      <p> To calculate the "Solar Zenith Angle" subtract 90 from the "Sun Elevation Angle", which can be found from the MetaData. </p>
+
+	                      <br><br>
+
+	                      <h3> "d" VALUE </h3> 
+	                      <p> To find the Earth-Sun distance first find the day of the year from this table below, then go on the <a href="http://landsathandbook.gsfc.nasa.gov/data_prod/prog_sect11_3.html">USGS Website</a> and download the excel file in section 11.3.2 next to "d" to determine the value. 
+	                      </p>
+	                      <div class = "thumbnail no-border">
+	                          <img src="images/TOA/dayofyeat_IMG.PNG" alt="TOA">
+
+	                          <a href="http://www.mbari.org/staff/coletti/doytable.html">SOURCE</a>
+	                        </div>
+
+	                        <br><br>
+
+	                        <h3> Plug into Raster Calculator </h3> 
+	                        <p> For the L value, replace it with the radiance raster file you obtained from the first step "DN to Radiance" for each band. See below for reference <p> 
+
+	                        <div class = "thumbnail no-border">
+	                          <img src="images/TOA/L05_IMG/2005/L05_2005_raster_calc_ref.PNG" alt="TOA">
+	                        </div>
+	                    </div>
+	                </div>
+
+	                    <div class = "col-sm-12" id = "Landsat8">
+	                        <hr width = 15%>
+	                        <h1> <b>LANDSAT 8 OLI & TIRS</b></h1>
+	                        <br>
+	                        <p class = "lead"> The TOA atmospheric correction for Landsat 8 imagery converts DN values to Radiance separately, although similar, to the conversion to Reflectance. Luckily, all of the values will be found in the metadata, making the process a lot less tedious compared to the older Landsat EO data. This method is based on the USGS correction method in the <a href="https://landsat.usgs.gov/documents/Landsat8DataUsersHandbook.pdf">Landsat 8 Data User Handbook </a>.
+	                        </p>
+	                        <div class = "thumbnail no-border">
+	                          <img src="images/TOA/L08_IMG/L08_B1_IMG.jpg" alt="REFB1">
+	                        </div>
+	                        <br>
+	                        <h2> <b>DN TO RADIANCE (OLI/TIRS)</b></h2> 
+	                        <div class="panel panel-default">
+	                          <div class="panel-heading primary-color">
+	                            <h3> Lλ = ML * Qcal + AL</h3> 
+	                          </div>
+	                          <div class = "panel-body">
+	                            <div class = "col-sm-12">
+	                              <p style="font-size:15px"> 
+	                                <b>Lλ</b> = Spectral Radiance in watts/(meter squared * sr * μm) <br><br>
+	                                <b>QCal</b> = DN values for each band <br><br>
+	                                <b>ML</b>  = Radiance multiplicative scaling factor for the band (RADIANCE_MULT_BAND_n from the metadata)<br> <br>
+	                                <b>AL</b>  = Radiance additive scaling factor for the band (RADIANCE_ADD_BAND_n from the metadata)
+	                              </p>
+	                            </div>
+	                          </div>
+	                        </div>
+	                        <br>
+	                        <h3> Plug into Raster Calculator </h3> 
+	                        <p> After obtaining all of the variable values, use the "Raster Calculator" where "Qcal" will be the original raster file for each band.<p> 
+
+	                        <div class = "thumbnail no-border">
+	                          <img src="images/TOA/L08_IMG/L08_raster_calc_rad.PNG" alt="TOA">
+	                        </div>
+	                        <br><br>
+	                      <div class = "col-sm-12" id="8-ref">
+	                   	  <hr width = 15%>
+	                        <h2> <b>DN TO TOA REFLECTANCE (OLI) </b></h2> 
+	                        <p class = "lead"> A two step process: The first step is to convert DN to uncorrected reflectance, similar to finding Radiance. The second step is to account for the solar angle (found in the metadata).</p> 
+	                        <br>
+	                        <h3> FIRST STEP </h3> 
+	                        <div class="panel panel-default">
+	                          <div class="panel-heading primary-color">
+	                            <h3> pλ' = Mp * Qcal + Ap</h3> 
+	                          </div>
+	                          <div class = "panel-body">
+	                            <div class = "col-sm-12">
+	                              <p style="font-size:15px"> 
+	                                <b>pλ'</b> = Top of Atmosphere Reflectance, without correction for solar angle (unitless) <br><br>
+	                                <b>QCal</b> = Level 1 DN values for each band <br><br>
+	                                <b>Mp</b>  = Reflectance multiplicative scaling factor for the band (REFLECTANCE_MULT_BAND_n; from the metadata)<br> <br>
+	                                <b>Ap</b>  = Reflectance additive scaling factor for the band (REFLECTANCE_ADD_BAND_n; from the metadata)
+	                              </p>
+	                            </div>
+	                          </div>
+	                        </div>
+	                        <br><br>
+	                        <h3> SECOND STEP </h3> 
+	                        <div class="panel panel-default">
+	                          <div class="panel-heading primary-color">
+	                            <h3> pλ = pλ' / sin(θ)</h3> 
+	                          </div>
+	                          <div class = "panel-body">
+	                            <div class = "col-sm-12">
+	                              <p style="font-size:15px"> 
+	                                <b>pλ</b> = Top of Atmosphere Reflectance (unitless) <br><br>
+	                                <b>pλ'</b> = Top of Atmosphere Reflectance, without correction for solar angle (unitless) <br><br>
+	                                <b>θ</b> = Solar Elevation Angle (from metadata)
+	                              </p>
+	                            </div>
+	                          </div>
+	                        </div>
+	                        <br><br>
+	                        <h3> Plug into Raster Calculator </h3> 
+	                        <p> For each of the steps to calculate the Reflectance, plug all of the equations in for each band (except for the thermal bands 10 & 11). For step two, "pλ'" will be the raster files of reflectance values obtained in step 1.<p> 
+
+	                        <div class = "thumbnail no-border">
+	                          <img src="images/TOA/L08_IMG/L08_raster_calc_ref.PNG" alt="TOA">
+	                        </div>
+	                    </div>
+	                    </div>
+
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	          <div ng-include src="'/partials/backtotop.html'"></div>
+	        </div>
+	      </div>
+
+
+	      <div class="top-padding" id="cloud-masking">
+	        <div class="row bottom-margin">
+	          <div class="panel panel-default">
+	            <div class="panel-heading primary-color">
+	              <h1> CLOUD MASKING</h1> 
+	            </div>
+	            <div class = "panel-body">
+	              <div class = "row">
+	                <div class = "col-sm-12">
+	                  <div class = "thumbnail no-border">
+	                    <img src="images/CloudMasking/cloud_mask_IMG.jpg" alt="TOA">
+	                  </div>
+	                  <div class = "col-sm-12" id = "getting-started">
+	                  <br><br>
+	                    <h2> GETTING STARTED</h2>
+	                    <p class = "lead"> 
+	                      While there are multiple ways to undergo cloud masking, this tutorial will use Iso-clustering unsupervised classification method to group unwanted pixels that represent clouds, borders, etc. This step is suggested after completing the atmospheric correction (converting DN to Radiance to Reflectance), with either the TOA or COST methods.
+	                      </p>
+	                   </div>
+
+	                   <div class = "col-sm-12" id = "step1">
+
+	                     <br><br> 
+	                     <h2> STEP 1: Unsupervised Classification </h2> 
+	                     <br><br>
+	                     <p class = "lead">Use the ArcMap search tool to look-up and click "Iso-Cluster Unsupervised Classification. Note: You will need the Spatial Analyst License which can be added by going to "Customize" --> "Extensions" and checking the box for "Spatial Analyst". <br><br> Add the raster image file or the bands one by one (at least three or more) in the "Input Raster Bands". </p>
+	              
+	                <div class = "col-sm-6">
+	                  
+	                  <p class = "lead">
+	                   The "Number of Classes" refers to how many classes you want to group the pixels by is suggested to be around 25. It may be better to have a greater number of classes since we will be extracting the classes that correspond to clouds and unwanted pixels later on. It is best to play around with this attributes to get the best results.<br><br> "Minimum Class Size" is defined as the minimum number of cells in a valid class, suggested to be around 20-40.</p>
+	                </div>
+	                <div class = "col-sm-6">
+	                  <div class = "thumbnail no-border">
+	                    <br><br>
+	                    <img src="images/CloudMasking/unsuper_IMG.PNG" alt="TOA">
+	                  </div>
+
+	                </div>
+	            	</div>
+
+	            	<div class = "col-sm-12" id = "step2">
+
+	                <br><br>
+	                <h2> STEP 2: Extract by Attribute </h2> 
+	                <br><br> 
+
+	                <div class = "col-sm-6">
+	                  
+	                  <p class = "lead">
+	                    Using the classification image previously obtained, use the "Extract by Attribute" tool input the "Where Clause". This will allow for all of the wanted pixels extracted according to class. In other words, find all of the classes that are NOT cloud and plug those values into the "Where Clause". 
+	                  </p>
+	                </div>
+	                <div class = "col-sm-6">
+	                  <div class = "thumbnail no-border">
+	                      <img src="images/CloudMasking/Extract_by_Attribute_1999.PNG" alt="CloudMask">
+	                  </div>
+	                </div>
+	            	</div>
+
+	            	<div class = "col-sm-12" id = "step3">
+
+	                <br><br>
+	                <h2> STEP 3: Extract by Mask </h2> 
+	                <br><br> 
+	                <div class = "col-sm-6">
+	                  <p class = "lead">
+	                    Using the extracted mask file, use the "Extract by Mask" tool to obtain the pixel values from the original raster image. The final output image should have all of the clouds and unwanted pixels as NA or "No Data".
+	                  </p>
+	                </div>
+	                <div class = "col-sm-6">
+	                  <div class = "thumbnail no-border">
+	                      <img src="images/CloudMasking/extract_by_mask.PNG" alt="CloudMask">
+	                  </div>
+	                </div>
+	            </div>
+	           </div>
+	          </div>
+	        </div>
+	      </div>
+	      <div ng-include src="'/partials/backtotop.html'"></div>
+	  </div>
+	</div>
+
+	<div class="top-padding" id="TIRS-Thermal">
+	        <div class="row bottom-margin">
+	          <div class="panel panel-default">
+	            <div class="panel-heading primary-color">
+	              <h1> THERMAL BANDS CONVERSION</h1> 
+	            </div>
+	            <div class = "panel-body">
+	              <div class = "row">
+	                <div class = "col-sm-12">
+	                  <div class = "thumbnail no-border">
+	                    <img src="images/Thermal_2.PNG" alt="TOA">
+	                  </div>
+	                  <div class = "col-sm-12" id = "TIRS-getting-started">
+	                  <br><br>
+	                    <h2> GETTING STARTED</h2>
+	                    <p class = "lead"> 
+	                      Thermal Infrared Sensor (TIRS) bands detect the thermal radiance and should be converted to TOA spectral radiance in order to convert into brightness temperature in Kelvins (K) using the methods in this tutorial. It is important to note the differentiation between thermal band designation for different satellites and sensors. For example, Landsat 5 thermal band is 6, while Landsat 8 TIR bands are 10 & 11. In addition, to accurately illustrate the temperature gradient, it is best to perform a cloud mask to reduce visual errors, since clouds and haze typically are very low temperatures. 
+	                      </p>
+	                   </div>
+
+	                   <div class = "col-sm-12" id = "TIRS-landsat8"> 
+	                   	<br><br>
+	                   	<h2>LANDSAT 8 TIRS</h2> 
+	                   		<p class = "lead">
+	                   			Landsat 8 thermal bands data, Bands 10 & 11, should be converted to spectral radiance and then to brightness temperature (K) using the followiing set of equations. It is important to note that since 2013, the thermal energy outside of the field of view (FOV) has obstructed the data in both bands 10 and 11. According to the USGS site <a href="http://landsat.usgs.gov/Landsat8_Using_Product.php">HERE</a> Band 11 has been affected far greater than Band 10 and therefore should not be used for quantitative analysis. 
+	                   		</p>
+	                   		<br><br><br>
+	                   		<div class = "col-sm-12" id = "TIRS-radiance">
+	                   			<hr width = 15%>
+		                   		<h2> TIRS DN TO RADIANCE </h2> 
+		                   		<div class="panel panel-default">
+		                          <div class="panel-heading primary-color">
+		                            <h3> Lλ = ML * Qcal + AL</h3> 
+		                          </div>
+		                          <div class = "panel-body">
+		                            <div class = "col-sm-12">
+		                              <p style="font-size:15px"> 
+		                                <b>Lλ</b> = Spectral Radiance in watts/(meter squared * sr * μm) <br><br>
+		                                <b>QCal</b> = DN values for each band <br><br>
+		                                <b>ML</b>  = Radiance multiplicative scaling factor for the band (RADIANCE_MULT_BAND_n from the metadata)<br> <br>
+		                                <b>AL</b>  = Radiance additive scaling factor for the band (RADIANCE_ADD_BAND_n from the metadata)
+		                              </p>
+		                            </div>
+		                          </div>
+		                        </div>
+	                      </div>
+	                      <div class = "col-sm-12" id = "TIRS-temperature">
+	                      	<hr width = 15%>
+		                   		<h2> RADIANCE TO BRIGHTNESS TEMPERATURE </h2> 
+		                   		<div class="panel panel-default">
+		                          <div class="panel-heading primary-color">
+		                            <h3> T = K2 / ln(K1 / Lλ + 1)</h3> 
+		                          </div>
+		                          <div class = "panel-body">
+		                            <div class = "col-sm-12">
+		                              <p style="font-size:15px"> 
+		                                <b>Lλ</b> = TOA Spectral Radiance in watts/(meter squared * sr * μm) <br><br>
+		                                <b>K1</b> = Band-specific thermal conversion constant from the metadata (K1_CONSTANT_BAND_x, where x is the thermal band number) <br><br>
+		                                <b>K2</b>  = Band-specific thermal conversion constant from the metadata (K2_CONSTANT_BAND_x, where x is the thermal band number)<br> <br>
+		                                <b>T</b>  = At-satellite brightness temperature (K)
+		                              </p>
+		                            </div>
+		                          </div>
+		                        </div>
+	                      </div>
+	                      <br><br><br>
+	                      <hr width = 15%>
+	                      <h3> Raster Calculation </h3> 
+	                    	<div class = "col-sm-12">
+	                      <div class = "thumbnail no-border">
+	                        <img src="images/TOA/L05_IMG/2005/L05_raster_calc_rad.PNG" alt="TOA">
+	                      </div>
+	                      <p class = "lead"> After obtaining the variables from the metadata, plug in the equation into the "raster Calculator" tool as seen above, which can be accessed by using the search tab on the very rightside of ArcMap.</p>
+	                    </div>
+
+
+	                   </div>
+
+	                 </div>
+	               </div>
+	             </div>
+	           </div>
+	         </div>
+	       </div>
+
+
+
+
+	    
+
+	    </div> <!-- End page content -->
+
+
+	  </div>
+	</div> <!-- End of Container -->
+</body>

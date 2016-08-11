@@ -1,0 +1,199 @@
+<meta property = "og:title" content = "Project Gallery"/>
+<meta property="og:type" content="website" />
+<meta name="description" content="Read about projects that utilize GIS to spark new ideas for your next big project!">
+<meta name="keywords" content="GIS, Python, Tutorial, R, Scripting, Programming, projects">
+<meta property="og:image" content="images/intro_thumbnail.png" />
+<meta property = "og:description" content = "Read about projects that utilize GIS to spark new ideas for your next big project!"/>
+<meta property="og:url" content="http://www.gishub.net/#/blog/projects" />
+
+<div class="projectbanner">
+  <div class="text-center top-padding">
+    <br><br><br><br><br>
+    <h1 class="home-heading">PROJECT GALLERY</h1>
+	<h3 class = "heading-caption">Read about projects that utilize GIS to spark <br> new ideas for your next big project!</h3>
+	<br>
+	<br>
+    <a href = "#/blog/projects#gallery" class = "btn btn-circle page-scroll" style = "color:black">
+    	<i class = "fa fa-angle-double-down animated"> </i>
+    </a>
+  </div>
+</div>
+
+<div class = "container">
+  <div class = "col-sm-12 top-padding" id = "gallery">
+    <div row>
+      <div class = "col-sm-12">
+
+      <div class = "col-sm-6 gallery">
+    	    <div class="thumbnail">
+    	    	<a href="#/blog/projects#env-conservation" title="classification" data-gallery>
+    	    		<img src="images/resize_riskmap.jpg" alt="classification">
+    	    	</a>
+            <p class="txt">
+              <h3><b>Environmental Conservation:</b><br> Monitoring Survivorship of Loggerhead Sea Turtles<h3>
+            </p>
+    	    </div>
+    	  </div>
+
+        <div class = "col-sm-6 gallery">
+    	    <div class="thumbnail">
+    	    	<a href="#/blog/projects#land-cover" title="classification" data-gallery>
+    	    		<img src="images/resize_mangrove2.png" alt="classification">
+    	    	</a>
+            <p class="txt">
+              <h3><b>Land Cover Classification:</b><br> Mapping Land Cover Disturbances of Mangrove Forests<h3>
+            </p>
+    	    </div>
+    	  </div>
+      </div>
+
+      <div class = "col-sm-12">
+
+      <div class = "col-sm-6 gallery">
+    	    <div class="thumbnail">
+    	    	<a href="#/blog/projects#urban-heat" title="classification" data-gallery>
+    	    		<img src="images/1999_2015_TEMP.jpg" alt="classification">
+    	    	</a>
+            <p class="txt">
+              <h3><b>Urban Heat Island:</b><br> Monitoring Risks in Jakarta, Indonesia<h3>
+            </p>
+    	    </div>
+    	  </div>
+
+        <div class = "col-sm-6 gallery">
+    	    <div class="thumbnail">
+    	    	<a href="#/blog/projects#sargassum" title="classification" data-gallery>
+    	    		<img src="images/sargassum.JPG" title= "classification">
+    	    	</a>
+            <p class="txt">
+              	<h3><b>Environmental Monitoring:</b><br>Detection of Sargassum in the Carribbean Sea from 2003 until 2015<h3>
+            </p>
+    	    </div>
+    	  </div>
+      </div>
+
+    </div>
+</div>
+</div>
+
+
+
+<div class="container top-padding" id = "env-conservation">
+<div class = "row bottom-margin">
+	<div class="panel panel-default">
+	  <div class="panel-heading primary-color">
+	  	<h1>Monitoring Survivorship of Loggerhead Turtles in MD</h1>
+	  </div>
+	  <div class="panel-body">
+	  	<div class="col-sm-4">
+	  		<div class="thumbnail">
+				<img src="images/riskmap_FD.jpg" alt="PGCounty">
+			</div>
+	  	</div>
+	  	<div class = "col-sm-8">
+
+			<p class = "lead"> A risk map spatially representing areas in the Chesapeake Bay and Atlantic Coast of Maryland that pose a risk to Loggerhead Sea turtles in the summer of 2015. The map takes into consideration oceanic variables such as sea surface temperature, chlorophyll-a, and historical stranding/mortality data from 1991 to 2015. </p>
+			<p class = "lead">The Pearson’s r correlation values were used as a guide to create a risk map relative to stranding in 2015. The averaged monthly datasets of SST and chlorophyll-a for the peak months from April to June were converted and reclassified into raster format. In addition, by utilizing the point density tool, the magnitude per unit area of sea turtle stranding occurrences were calculated into a density raster. Using the weighted overlay method, these raster files were then reclassified into 5 levels according to risk and overlaid using a common measurement scale, weighted according to importance. The weights were based upon the correlation values, utilizing 50% as stranding density, 40% as sea surface temperature, and 10% as chlorophyll-a.  Furthermore, in order to create a continuous risk map, the weighted raster layer was first converted into point vector format to undergo an inverse distance weighted (IDW) technique, which determines cell values using linearly weighted combination of a set of sample points.</p>
+<br>
+			<p><em>Note: This project was completed for the Maryland Department of Natural Resources through NASA's DEVELOP program. Visit this <a href="http://develop.larc.nasa.gov/2015/summer_term/MarylandEcologicalForecasting.html">link</a> to find out more about the project!</em></p>
+		</div>
+	  </div>
+	</div>
+	<div ng-include src="'/partials/backtotop.html'"></div>
+</div>
+<hr width = 30%>
+
+
+<div class="row bottom-margin top-padding" id = "land-cover">
+	<div class="panel panel-default" >
+	  <div class="panel-heading primary-color">
+	  	<h1>Mapping Land Cover Disturbance of Mangrove Forests in Sibuguey Bay, Phillippines from 1995 to 2002</h1>
+	  </div>
+	  	<div class = "panel-body">
+  			<div class = "col-sm-6">
+				<div class="thumbnail">
+					<img src="images/Classification2.png" alt="classification">
+				</div>
+			</div>
+			<div class = "col-sm-6">
+				<div class="thumbnail">
+					<img src="images/Classification3.png" alt="classification">
+				</div>
+			</div>
+	    	<div class="col-sm-12">
+				<p class = "lead"> Mangrove forests hold ecological importance in providing ecosystem services such as filtration of water pollution, acting as buffers against strong waves, preventing soil erosion, and most importantly providing fish nurseries. However, Mangrove forests in many tropical regions including the Philippines have been threatened with destruction due to increased anthropogenic activities and conversion of forests into aquaculture. This study aims to analyze the mangrove forests located in Sibuguey Bay to document and compare the disturbance and changes between 1995 and 2002. The Landsat 7 ETM+ and Landsat 5 TM images were atmospherically corrected, and masked for clouds to determine the Disturbance Index (DI). After visualizing the disturbed and undisturbed mangrove forests, regions of interests (ROI) were taken to undergo the Maximum Likelihood Classification method to classify land cover change.</p>
+
+				<p class = "lead">
+				The top right image shows the final classification image. The unchanged mangrove forests, seen as a mossy green area along the coastal region is about 4.13% of the subsetted area and equates to about 0.0302 hectares. Unfortunately, the changed land cover did not stay within the mangrove regions and are seen periodically within non-mangrove classified areas. Nevertheless the sea green class is 2.38% of the total subsetted area and 0.01469 hectares. Of course, this is an overestimate when determining solely the mangrove disturbed areas. Likewise the burgundy class that reflect the highly disturbed areas from 1995 to 2002 is not reflective solely on mangrove disturbance and often reflect roads and urbanized areas. It is also seen to reflect cloud cover (though clouds were already masked), likely to be the caused by 14 thin layers of clouds that were not taken out from the image. The burgundy, high disturbed areas were 1.96% of the total subsetted areas and 0.01083 hectares. Therefore, the total overestimated disturbed area is about 0.02552 hectares.
+				</p>
+<br>
+<br>
+				<p><em>Note: This was a final project for a 400 level remote sensing course offered through the University of Maryland, College Park with Dr. Tatiana Loboda.</em></p>
+			</div>
+
+		</div>
+</div>
+<div ng-include src="'/partials/backtotop.html'"></div>
+</div>
+
+<hr width = 30%>
+
+<div class="container top-padding" id = "urban-heat">
+<div class = "row bottom-margin">
+	<div class="panel panel-default">
+	  <div class="panel-heading primary-color">
+	  	<h1>Urban Heat Island Effect: Jakarta, Indonesia</h1>
+	  </div>
+	  <div class="panel-body">
+	  	<div class="col-sm-12">
+	  		<div class="thumbnail">
+				<img src="images/1999_2015_TEMP.jpg" alt="Jakarta">
+			</div>
+	  	</div>
+	  	<div class = "col-sm-12">
+
+			<p class = "lead"> With the rise of urbanization in many developing nations, there needs to be better monitoring on how to sustainably urbanize when dealing with high population growth rates, while maintaining adequate living standards. One of the many issues with urbanization include the urban heat island effect, predominantly seen where large concentrated urban bodies with impervious surfaces retain large amounts of heat compared to its surrounding rural environment.The combination between rapid urban growth coupled with frequently intensifying heat waves due to global warming can significantly impact human health in these regions and can result in a positive feedback giving rise to even higher temperatures. There have already been cases in cities such as Shanghai, China where heat induced mortality is seen to increase directly due to the urban heat effect (Tan et al. 2010). <br><br>
+
+			This project monitors heat related risks in Jakarta, Indonesia from 1999 to 2015 by looking at land surface temperature and land cover classification, potentially forecasting future risk by using climatic models. The project will also utilize any demographic data from the regions census bureau to monitor heat-related mortality in the region.</p>
+		</div>
+	  </div>
+	</div>
+	<div ng-include src="'/partials/backtotop.html'"></div>
+</div>
+<hr width = 30%>
+
+</div>
+
+<div class="row top-padding bottom-margin" id = "sargassum">
+	<div class="panel panel-default" >
+	  <div class="panel-heading primary-color">
+	  	<h1>Detection of Sargassum in the Carribbean Sea from 2003 until 2015</h1>
+	  </div>
+      <div class = "panel-body">
+	    	<div class="col-sm-5">
+				<p class = "lead">
+          The nations of the Caribbean sea were inundated by unprecedented quantities of Sargassum, a free-floating brown macro-alga, that washed ashore. The project
+          aims to monitor and model Sargassum growth and spatial distribution within this region from years 2003 until 2015 by utilizing NASA Earth
+          observations. Daily MODIS Terra imagery were obtained, as well as, oceanic variables: sea surface temperature and chlorophyll-a.
+          The team derived the Floating Algal Index (FAI) using Terra MODIS data, and compared the FAI to various oceanic variables to determine the ideal
+           pelagic environment for Sargassum growth. The project also examined the annual spread of Sargassum throughout the region by using TerrSet's
+           Earth Trends Modeler. As part of the international effort to better understand the life cycle of Sargassum in the Caribbean, the results of
+           this project will help local economies thrive and promote sustainable management practices.
+        </p>
+      </div>
+  			<div class = "col-sm-7">
+          <br><br><br>
+				<div class="thumbnail">
+					<img src="images/sargassum.JPG" alt="detection">
+				</div>
+			</div>
+
+<br>
+<br>
+				<p><em>Note: This project was completed through NASA's DEVELOP program. Visit this <a href="http://develop.larc.nasa.gov/2016/spring/CaribbeanOceans.html">link</a> to find out more about the project!</em></p>
+  		</div>
+
+		</div>
+<div ng-include src="'/partials/backtotop.html'"></div>
+</div>
+</div>

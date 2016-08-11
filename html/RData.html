@@ -1,0 +1,65 @@
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+	<div class = "container">
+		<div class = "row top-padding" id = "link_top">
+	  	<nav class="col-sm-3" id="myScrollspy">
+	        <ul class="nav nav-pills nav-stacked">
+	        	<div class = "panel-group">
+		        	<div class="panel-heading">
+		        		<h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/RData#collapse1" class="list-group-item active">Exploring R</a>
+					     </h1>
+					     <div id="collapse1" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<li><a class="text-black list-group-item" href="#/blog/RData/r-data-basics#access-data"><b>Access Data</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/RData/r-data-basics#read-file"><b>Read From File</b></a></li>
+				        </ul>
+				    </div>
+				    	
+	        		</div>
+			    </div>
+    		</ul>
+	     </nav>
+
+	      <div class="col-sm-9"> <!-- begin page content -->
+	    		 <div class = "top-padding" id="r_data_basics">
+					<div class = "row bottom-margin">
+						<div class="panel panel-default">
+					  		<div class="panel-heading primary-color">
+					  			<h1>R Data: Accessing Datasets</h1>
+					  		</div>
+					  		<div class="panel-body">
+					  			<div class = "col-12-sm" id = "access-data">
+					  				<br><br>
+						  			<h3>ACCESS DATA:</h3>
+						  			<p class = "lead"> Some datasets are already available on your computer, and others have to be loaded/imported. </p>
+						  			<code class = "prettyprint">
+						  				data() # To see all the data available on your computer<br><br>
+						  				data("rivers") # load data <br><br>
+						  				help(rivers)  # get a description of the data
+						  			</code>
+						  		</div>
+						  		<div class = "col-12-sm" id = "read-file">
+						  			<br><br>
+						  			<h3>READ FROM FILE:</h3>
+						  			<p class = "lead"> CSV files can be read using the directory where the file is stored. After you get the files directory by right clicking and clicking on "get info". </p>
+
+						  			<code class = "prettyprint">
+						  				setwd("/directory/folder") <br><br>
+						  				help(read.csv) #find out more on how to read a .csv file <br> <br>
+						  				fileData <- read.csv("rivers.csv") #assign file to a variable
+						  			</code>
+						  		</div>
+					  		</div>
+				  		</div>
+
+				  		<div ng-include src="'/partials/backtotop.html'"></div>
+
+				  	</div>
+				 </div>	
+
+
+			</div> <!--end page content -->
+
+	 </div>
+	</div>
+</body>

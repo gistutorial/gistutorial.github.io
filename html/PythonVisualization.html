@@ -1,0 +1,494 @@
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+	<div class = "container">
+		<div class = "row top-padding" id = "link_top">
+	  	<nav class="col-sm-3" id="myScrollspy">
+	        <ul class="nav nav-pills nav-stacked">
+	        	<div class = "panel-group">
+		        	<div class="panel-heading">
+		        		<h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/PythonVisualization#collapse1" class="list-group-item active">Visualize: Heat Maps</a>
+					     </h1>
+					     <div id="collapse1" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/data-visualization#data-visualization"><b>Introduction</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/data-visualization#import"><b>Import</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/data-visualization#define-variable"><b>Define Variable</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/data-visualization#seaborn"><b>Seaborn Heatmap</b></a></li>
+				        </ul>
+				    	</div>
+							<h1 class="panel-title">
+							<a data-toggle="collapse" href="#/blog/PythonVisualization#collapse2" class="list-group-item active">Visualize: Joint Plots</a>
+						 </h1>
+						 <div id="collapse2" class="panel-collapse collapsing">
+							<ul class="list-group">
+								<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/joint_plot#joint_plot"><b>Introduction</b></a></li>
+								<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/joint_plot#jointplot_import"><b>Import</b></a></li>
+								<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/joint_plot#create_datasets"><b>Create Datasets</b></a></li>
+								<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/joint_plot#joint_plot_do"><b>Joint Plot</b></a></li>
+							</ul>
+						</div>
+						<h1 class="panel-title">
+						<a data-toggle="collapse" href="#/blog/PythonVisualization#collapse3" class="list-group-item active">Visualize: Histograms</a>
+					 </h1>
+					 <div id="collapse3" class="panel-collapse collapsing">
+						<ul class="list-group">
+							<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/histogram#histogram"><b>Introduction</b></a></li>
+							<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/histogram#histogram_import"><b>Import</b></a></li>
+							<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/histogram#histogram_datasets"><b>Create Datasets</b></a></li>
+							<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/histogram#histogram_plot_do"><b>Histogram Plot</b></a></li>
+							<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/histogram#histogram_two"><b>Multiple Plots</b></a></li>
+						</ul>
+					</div>
+					<h1 class="panel-title">
+					<a data-toggle="collapse" href="#/blog/PythonVisualization#collapse4" class="list-group-item active">Kernel Density Estimation</a>
+				 </h1>
+				 <div id="collapse4" class="panel-collapse collapsing">
+					<ul class="list-group">
+						<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kernel_density#kernel_density"><b>Introduction</b></a></li>
+						<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kernel_density#kde_import"><b>Import</b></a></li>
+						<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kernel_density#kde_datasets"><b>Create Datasets</b></a></li>
+						<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kernel_density#kde_do"><b>KDE Plot</b></a></li>
+						<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kernel_density#kde_do2"><b>KDE Bandwidths</b></a></li>
+						<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kernel_density#kde_do3"><b>Types of KDE Plots</b></a></li>
+					</ul>
+				</div>
+				<h1 class="panel-title">
+				<a data-toggle="collapse" href="#/blog/PythonVisualization#collapse5" class="list-group-item active">KDE Classic Example</a>
+			 </h1>
+			 <div id="collapse5" class="panel-collapse collapsing">
+				<ul class="list-group">
+					<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kde_example#kde_example"><b>Introduction</b></a></li>
+					<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kde_example#kde_example_import"><b>Import</b></a></li>
+					<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kde_example#kde_example_datasets"><b>Load Dataset</b></a></li>
+					<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kde_example#kde_example_do"><b>Query Dataset</b></a></li>
+					<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kde_example#kde_example_do2"><b>Plot Iris</b></a></li>
+					<li><a class="text-black list-group-item" href="#/blog/PythonVisualization/kde_example#kde_example_do3"><b>Differentiate Plots</b></a></li>
+				</ul>
+			</div>
+
+	        		</div>
+			    </div>
+    		</ul>
+	     </nav>
+
+
+			<div class="col-sm-9"> <!-- begin page content -->
+			<div class="top-padding" id="data-visualization">
+				<div class="row bottom-margin">
+					<div class="panel panel-default">
+					  <div class="panel-heading primary-color">
+					  	<h1>Visualize Data: Create a Heat Map with Seaborn</h1>
+					  </div>
+					 	<div class="panel-body">
+					 		<div class = "col-sm-6">
+						 		<p class = "lead">Seaborn is a great visualization tool that is based similar to matplotlib, but with a more current and attractive design scheme. Feel free to visit <a href="http://stanford.edu/~mwaskom/software/seaborn/examples/heatmap_annotation.html"> seaborn</a> to browse their latest gallery and to check out some of their tutorials for scatterplots, densityplots, histograms, and more!
+						 		</p>
+						 	</div>
+						 	<div class="col-sm-6">
+						  		<div class="thumbnail">
+						  			<br>
+						  			<br>
+						  			<img src="images/test.png" alt="dataset-Properties">
+								</div>
+				  			</div>
+				  			<div class = "col-sm-12" id = "import">
+				  				<br><br>
+						 		<p class="lead"><h3>IMPORT</h3> Seaborn Library </p>
+								<code class="prettyprint">
+									import seaborn as sns
+								</code>
+							</div>
+							<div class = "col-sm-12" id = "define-variable">
+							<br><br>
+								<p class = "lead"><h3>DEFINE VARIABLES:</h3>Define and load the datafile into variable "data" using the seaborn library sns. </p>
+								<code class="prettyprint">
+									data = sns.load_dataset("variable")
+								</code>
+
+								<p class = "lead">Use pivot function to get year as x-axis, month as y-axis, and count as the shaded color. Also define how many months there are ie. [:12] = 12 months (January - December) </p>
+								<code class="prettyprint">
+									data_rect = data.pivot("month", "year", "count") <br>
+									data_rect = data_rect.ix[data.month.iloc[:12]]
+								</code>
+							</div>
+							<div class = "col-sm-12" id = "seaborn">
+								<br><br>
+								<p class = "lead"> <h3> SEABORN HEATMAP</h3> Call the seaborn library and define color, and line width of the heat map </p>
+								<code class="prettyprint">
+									sns.heatmap(data_rect,cmap="Reds", linewidths= 2);
+								</code>
+							</div>
+							</div>
+
+				  		</div>
+				  		<div ng-include src="'/partials/backtotop.html'"></div>
+				  	</div>
+
+						<div class="top-padding" id="joint_plot">
+							<div class="row bottom-margin">
+								<div class="panel panel-default">
+								  <div class="panel-heading primary-color">
+								  	<h1>Visualize Data: JointPlot with Seaborn</h1>
+								  </div>
+								 	<div class="panel-body">
+										<div class = "col-sm-6">
+											<div class="thumbnail">
+												<img src="images/jointplot_hex.JPG" alt="jointplot">
+										</div>
+									</div>
+										<div class="col-sm-6">
+									  		<div class="thumbnail">
+									  			<img src="images/jointplot.JPG" alt="jointplot">
+											</div>
+							  			</div>
+								 		<div class = "col-sm-12">
+									 		<p class = "lead">Create visually appealing histograms and jointplots using the <a href="https://stanford.edu/~mwaskom/software/seaborn/examples/hexbin_marginals.html"> seaborn</a> library! Use the iPython library via Jupyter
+												to physically see the graph inline. Using the Jupyter notebook can help organize input code and output graphs in an instant.<br><br>
+												Feel free to visit <a href="http://stanford.edu/~mwaskom/software/seaborn/examples/index.html"> seaborn</a> to browse their latest gallery and to check out some of their tutorials for scatterplots, densityplots, histograms, and more!
+											</p>
+									 	</div>
+
+							  			<div class = "col-sm-12 top-padding" id = "jointplot_import">
+									 		<h3>IMPORT</h3> <p class="lead">Seaborn, & Numpy Libraries </p>
+											<code class="prettyprint">
+												# import data handling libraries <br>
+												import numpy as np <br>
+												from numpy.random import randn <br><br>
+
+												# Import seaborn library <br>
+												import seaborn as sns <br><br>
+											</code>
+										</div>
+
+										<div class = "col-sm-12" id = "create_datasets">
+										<br><br>
+											<h3>CREATE DATASETS:</h3><p class = "lead">Use the randn tool to create a normally distributed dataset.</p>
+											<code class="prettyprint">
+												# note: number of value points should be the same.<br>
+												dataset1 = randn(2000) <br>
+												dataset2 = randn(2000)
+											</code>
+										</div>
+										<div class = "col-sm-6" id = "joint_plot_do">
+											<br><br>
+											<h3>SEABORN JOINTPLOT</h3><p class = "lead">Use the jointplot tool in seaborn to create side-by-side plots that visually represents distribution </p>
+											<code class="prettyprint">
+												sns.jointplot(dataset1, dataset2) <br><br>
+
+												# You can change the scatter plot style to a shaded hex style <br>
+												sns.jointplot(dataset1, dataset2, kind = 'hex') <br><br>
+
+												# OR a Kernel Density Estimate Plot (KDE) <br>
+												sns.jointplot(dataset1,dataset2, kind='kde') <br>
+											</code>
+										</div>
+										<div class="col-sm-6">
+											<br><br><br>
+									  		<div class="thumbnail">
+									  			<img src="images/jointplot_kde.JPG" alt="jointplot_kde">
+											</div>
+							  			</div>
+
+										</div>
+
+							  		</div>
+							  		<div ng-include src="'/partials/backtotop.html'"></div>
+							  	</div>
+								</div>
+
+								<div class="top-padding" id="histogram">
+									<div class="row bottom-margin">
+										<div class="panel panel-default">
+										  <div class="panel-heading primary-color">
+										  	<h1>Visualize Data: Histogram with Matplotlib</h1>
+										  </div>
+										 	<div class="panel-body">
+												<div class = "col-sm-6">
+													<div class="thumbnail">
+														<img src="images/histogram.JPG" alt="histogram">
+												</div>
+											</div>
+											<div class = "col-sm-6">
+												<div class="thumbnail">
+													<img src="images/histogram_two.JPG" alt="histogram">
+											</div>
+										</div>
+										<div class = "col-sm-12">
+											<p class = "lead">
+												Create basic plots using matplotlib. This tutorial will allow you to plot multiple histograms in one, and provide you with syntax support.
+												<br><br>
+												Feel free to learn more about histograms from the Wiki page available <a href = "https://en.wikipedia.org/wiki/Histogram"> here</a>.
+											</p>
+										</div>
+
+									  	<div class = "col-sm-12 top-padding" id = "histogram_import">
+											 		<h3>IMPORT</h3> <p class="lead">Matplotlib, & Numpy Libraries </p>
+													<code class="prettyprint">
+														# import data handling libraries <br>
+														import numpy as np <br>
+														from numpy.random import randn <br><br>
+
+														# Import matplotlib library <br>
+														import matplotlib as mpl <br>
+														import matplotlib.pyplot as plt <br><br>
+
+														# If using iPython Notebook, lets graph show inline <br>
+														%matplotlib inline <br>
+													</code>
+												</div>
+
+											<div class = "col-sm-12" id = "histogram_datasets">
+												<br><br>
+													<h3>CREATE DATASETS:</h3><p class = "lead">Use the randn tool to create a normally distributed dataset.</p>
+													<code class="prettyprint">
+														dataset1 = randn(100) <br>
+														dataset2 = randn(120) <br>
+														# note: dataset length does not have to be the same.
+													</code>
+												</div>
+												<div class = "col-sm-6" id = "histogram">
+													<br><br>
+													<h3>HISTOGRAM</h3><p class = "lead">Use plot to create histogram using the matplotlib library. </p>
+													<code class="prettyprint">
+														# bins default is 10, color default is blue <br>
+														plt.hist(dataset1,color='skyblue', bins = 20) <br><br>
+
+														# Syntax for titles, labels, grid option <br>
+														plt.xlabel('Value of X')<br>
+														plt.ylabel('Value of Y')<br>
+														plt.title('Histogram of Dataset') <br>
+														plt.grid(True)
+													</code>
+												</div>
+												<div class = "col-sm-6 top-padding">
+													<div class="thumbnail">
+														<img src="images/histogram.JPG" alt="histogram">
+												</div>
+											</div>
+												<div class = "col-sm-7" id = "histogram_two">
+													<br><br>
+													<h3>MULTIPLE HISTOGRAMS</h3><p class = "lead">Use plot to create multiple histogram in one plot using the matplotlib library. </p>
+													<code class="prettyprint">
+														# use alpha to indicate transparancy
+														plt.hist(dataset1,normed=True,color='skyblue',alpha=0.5,bins=20) <br>
+														plt.hist(dataset2,normed=True,color = 'green', alpha=0.4,bins=20)
+													</code>
+												</div>
+												<div class = "col-sm-5">
+													<br><br>
+													<div class="thumbnail">
+														<img src="images/histogram_two.JPG" alt="histogram">
+												</div>
+											</div>
+
+												</div>
+
+									  		</div>
+									  		<div ng-include src="'/partials/backtotop.html'"></div>
+									  	</div>
+										</div>
+
+										<div class="top-padding" id="kernel_density">
+											<div class="row bottom-margin">
+												<div class="panel panel-default">
+												  <div class="panel-heading primary-color">
+												  	<h1>Visualize Data: Kernel Density Estimation</h1>
+												  </div>
+												 	<div class="panel-body">
+														<div class="col-sm-4">
+													  		<div class="thumbnail">
+													  			<img src="images/kde_ploy.JPG" alt="kdeplot">
+															</div>
+											  			</div>
+															<div class="col-sm-4">
+														  		<div class="thumbnail">
+														  			<img src="images/kde_plot2.JPG" alt="kdeplot">
+																</div>
+												  			</div>
+																<div class="col-sm-4">
+															  		<div class="thumbnail">
+															  			<img src="images/kde_plot3.JPG" alt="kdeplot">
+																	</div>
+													  			</div>
+												 		<div class = "col-sm-12">
+													 		<p class = "lead">Create visually appealing kernel density estimation plots using the <a href="http://stanford.edu/~mwaskom/software/seaborn/examples/heatmap_annotation.html"> seaborn</a> library! Use the iPython library via Jupyter
+																to physically see the graph inline. Using the Jupyter notebook can help organize input code and output graphs in an instant.<br><br>
+																Feel free to visit <a href="http://stanford.edu/~mwaskom/software/seaborn/examples/index.html"> seaborn</a> to browse their latest gallery and to check out some of their tutorials for scatterplots, densityplots, histograms, and more!
+																<br><br>
+																<b>Kernel Density:</b> is a statistical method that smoothes out the data of a random variable in a non-parametric way. Read more about it on the Wiki page, <a href='https://en.wikipedia.org/wiki/Kernel_density_estimation'>here</a>.
+															</p>
+													 	</div>
+
+											  			<div class = "col-sm-12 top-padding" id = "kde_import">
+													 		<h3>IMPORT</h3> <p class="lead">Seaborn, & Numpy Libraries </p>
+															<code class="prettyprint">
+																# import data handling libraries <br>
+																import numpy as np <br>
+																from numpy.random import randn <br><br>
+
+																# Import seaborn library <br>
+																import seaborn as sns <br><br>
+															</code>
+														</div>
+
+														<div class = "col-sm-12" id = "kde_datasets">
+														<br><br>
+															<h3>CREATE DATASETS:</h3><p class = "lead">Use the randn tool to create a normally distributed dataset.</p>
+															<code class="prettyprint">
+																dataset = randn(45) <br>
+															</code>
+														</div>
+														<div class = "col-sm-6" id = "kde_do">
+															<br><br>
+															<h3>SEABORN KDE</h3><p class = "lead">Use the kdeplot tool in seaborn to create a kernel density estimation plot in just one step </p>
+															<code class="prettyprint">
+																sns.kdeplot(dataset) <br><br>
+
+															</code>
+														</div>
+														<div class="col-sm-6">
+															<br><br>
+													  		<div class="thumbnail">
+													  			<img src="images/kde_ploy.JPG" alt="plot_kde">
+															</div>
+											  			</div>
+															<div class = "col-sm-6" id = "kde_do2">
+																<br><br>
+																<h3>SETTING KDE BANDWIDTH</h3><p class = "lead">Use the bandwidth to adjust the sensitivity to frequency variations. Use FOR LOOP to go through bw 0.5 to 2 in 0.25 intervals. </p>
+																<code class="prettyprint">
+																	for bw in np.arange(0.5, 2, 0.25):<br>
+																	&nbsp;&nbsp;&nbsp;&nbsp;sns.kdeplot(dataset, bw=bw, lw=1.8, label=bw) <br><br>
+
+																	# you can also set bw to pre-defined widths: {‘scott’ | ‘silverman’ | scalar | pair of scalars}
+
+																</code>
+															</div>
+															<div class="col-sm-6">
+																<br><br>
+														  		<div class="thumbnail">
+														  			<img src="images/kde_plot2.JPG" alt="plot_kde2">
+																</div>
+												  			</div>
+																<div class = "col-sm-6" id = "kde_do3">
+																	<br><br>
+																	<h3>TYPES OF KDE</h3><p class = "lead"> </p>
+																	<code class="prettyprint">
+																		# define variable kernel types with the known options including the commonly used gaussian.<br>
+																		kernel_types = ["biw", "cos", "epa", "gau", "tri", "triw"] <br><br>
+
+																		# Use label to set legend <br>
+																		for kern in kernel_types: <br>
+																		sns.kdeplot(dataset,kernel=kern,label=kern) <br>
+
+																	</code>
+																</div>
+																<div class="col-sm-6">
+																	<br><br>
+																		<div class="thumbnail">
+																			<img src="images/kde_plot3.JPG" alt="plot_kde2">
+																	</div>
+																	</div>
+
+														</div>
+
+											  		</div>
+											  		<div ng-include src="'/partials/backtotop.html'"></div>
+											  	</div>
+												</div>
+
+										<div class="top-padding" id="kde_example">
+											<div class="row bottom-margin">
+												<div class="panel panel-default">
+												  <div class="panel-heading primary-color">
+												  	<h1>KDE Classic Example</h1>
+												  </div>
+												 	<div class="panel-body">
+														<div class="col-sm-6">
+																<div class="thumbnail">
+																	<img src="images/kde_plot5.JPG" alt="kdeplot">
+															</div>
+															</div>
+														<div class="col-sm-6">
+													  		<div class="thumbnail">
+													  			<img src="images/kde_plot4.JPG" alt="kdeplot">
+															</div>
+											  			</div>
+												 		<div class = "col-sm-12">
+													 		<p class = "lead">Use the sample dataset from the Seaborn Library to visualize petal length and width, while comparing two specie types. More details for this example can be found, <a href = 'https://stanford.edu/~mwaskom/software/seaborn/examples/multiple_joint_kde.html'> here </a> on the seaborn website! Use the iPython library via Jupyter
+																to physically see the graph inline. Using the Jupyter notebook can help organize input code and output graphs in an instant.<br><br>
+																Feel free to visit <a href="http://stanford.edu/~mwaskom/software/seaborn/examples/index.html"> seaborn</a> to browse their latest gallery and to check out some of their tutorials for scatterplots, densityplots, histograms, and more!
+																<br><br>
+																<b>Kernel Density:</b> is a statistical method that smoothes out the data of a random variable in a non-parametric way. Read more about it on the Wiki page, <a href='https://en.wikipedia.org/wiki/Kernel_density_estimation'>here</a>.
+															</p>
+													 	</div>
+
+											  			<div class = "col-sm-12 top-padding" id = "kde_example_import">
+													 		<h3>IMPORT</h3> <p class="lead">Seaborn Library</p>
+															<code class="prettyprint">
+																# Import seaborn library <br>
+																import seaborn as sns <br>
+															</code>
+														</div>
+
+														<div class = "col-sm-12" id = "kde_example_datasets">
+														<br><br>
+															<h3>LOAD DATASETS:</h3><p class = "lead"> Use the pre-existing dataset from Seaborn.</p>
+															<code class="prettyprint">
+																iris = sns.load_dataset('iris') <br><br>
+																#Use .head() to show a sample couple of rows to see what the dataset is like.
+																iris.head() <br>
+															</code>
+														</div>
+														<div class = "col-sm-12" id = "kde_example_do">
+															<br><br>
+															<h3>DEFINE VARIABLES</h3><p class = "lead">Define the variables by calling the dataset 'iris' and querying unique species names.</p>
+															<code class="prettyprint">
+																# define the two species by querying through the 'iris' dataset <br>
+																setosa = iris.query("species == 'setosa'")<br>
+																virginica = iris.query("species == 'virginica'")
+
+															</code>
+														</div>
+															<div class = "col-sm-7" id = "kde_example_do2">
+																<br><br>
+																<h3>PLOTTING IRIS</h3><p class = "lead">Try plotting the 'Iris' sepal width and length without differentiation between species. </p>
+																<code class="prettyprint">
+																	# call the sepal_width and sepal_length, set properties: x, y, shade, bw, cmap, etc. <br>
+																	sns.kdeplot(iris['sepal_width'],iris['sepal_length'],shade=True,cmap='ocean_r', bw='silverman')
+																</code>
+															</div>
+															<div class="col-sm-5">
+																<br><br>
+														  		<div class="thumbnail">
+														  			<img src="images/kde_plot5.JPG" alt="plot_kde5">
+																</div>
+												  			</div>
+																<div class = "col-sm-7" id = "kde_example_do3">
+																	<br><br>
+																	<h3>MULTI-PLOTTING</h3><p class = "lead"> Now that we can visually see there are two distinct groups in the dataset, lets separate them out. </p>
+																	<code class="prettyprint">
+																		# make sure shade_lowest is set to False <br>
+																		sns.kdeplot(setosa.sepal_width,setosa.sepal_length,shade=True,cmap='inferno', shade_lowest=False)<br>
+																		sns.kdeplot(virginica.sepal_width,virginica.sepal_length,shade=True,cmap='magma', shade_lowest=False)
+
+																	</code>
+																</div>
+																<div class="col-sm-5">
+																	<br><br>
+																		<div class="thumbnail">
+																			<img src="images/kde_plot4.JPG" alt="plot_kde2">
+																	</div>
+																	</div>
+
+														</div>
+
+											  		</div>
+											  		<div ng-include src="'/partials/backtotop.html'"></div>
+											  	</div>
+												</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>

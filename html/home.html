@@ -1,0 +1,151 @@
+<meta property = "og:title" content = "GIS HUB: HOME"/>
+<meta property="og:type" content="website" />
+<meta name="description" content="GIS HUB aims to help new and aspiring professsionals find their way into GIS technology and programming.">
+<meta name="keywords" content="GIS, Python, Tutorial, R, Scripting, Programming">
+<meta property="og:image" content="images/home_thumbnail.png" />
+<meta property = "og:description" content = "GIS HUB aims to help new and aspiring professsionals find their way into GIS technology and programming."/>
+<meta property="og:url" content="http://www.gishub.net/" />
+
+<!-- Carousel -->
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img class="first-slide" src="images/cover_photo1.jpg" alt="First slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1 class = "home-heading">GIS HUB</h1>
+          <h2 > <em> Where Inspiration Meets Discovery </em> </h2>
+          <p class = "heading-caption">GIS HUB aims to help new and aspiring professsionals find their way into GIS technology and programming.</p>
+          <p><a class="btn btn-lg btn-primary" href="#/blog/introduction" role="button">Learn more here!</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img class="second-slide" src="images/cover_photo2.jpg" alt="Second slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1 class = "home-heading">Python Tutorials</h1>
+          <p class = "heading-caption">Want to handle bulk data? Learn basic skills about data acquisition, data processing, and analysis using common libraries such as arcpy, numpy, scipy, and seaborn.</p>
+          <p><a class="btn btn-lg btn-primary" href="#/blog/pythonTutorial" role="button">Learn it here!</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img class="third-slide" src="images/cover_photo3.jpg" alt="Third slide">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1 class = "home-heading">Project Highlights</h1>
+          <p class = "heading-caption">Read about projects that utilize geographical information systems to spatially analyze data. Might help you spark new ideas for your next big project!</p>
+          <p><a class="btn btn-lg btn-primary" href="#/blog/projects" role="button">Browse gallery</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<div class="container">
+
+<!--About GIS Hub-->
+
+<div class = "row bottom-margin">
+	<div class = "body">
+		<div class="col-sm-5">
+			<h2><b>WHAT WE DO</b></h2>
+			<br>
+			<p class = "lead">GIS HUB aims to help new and aspiring professionals find their way into GIS technology and scripting programming languages such as Python and R through tutorial-based learning.
+			 </p>
+
+			 <p class = "lead"> Dive into some of the basic concepts and skills needed to tackle real world problems utilizing geographical information systems and programming softwares. From learning about Arcpy 101 or getting your feet wet with some data science, GIS HUB is a great place to learn some awesome skills to succeed in your upcoming project! </p>
+
+		</div>
+		<div class="col-sm-4">
+			<h2><b>WHO WE ARE</b></h1>
+			<br>
+			<p class = "lead"> GIS HUB is created by people who are passionate about sharing knowledge and skills about geographical information systems in hopes that it will spark creativity and drive to conquer the issues our Earth faces today and foster the leaders of tomorrow.
+			</p>
+			<p class = "lead">Feel free to visit our <a href="#/blog/introduction">Introduction</a> page to find out more or to contact us! </p>
+		</div>
+
+		<div class = "col-sm-3">
+			<br>
+			<br>
+			<center><i class= "glyphicon glyphicon-globe" style="font-size:150px;color:gray"></i></center>
+		</div>
+	</div>
+</div>
+
+<!--about GIS link to intro-->
+
+<div class = "row bottom-margin">
+	<div class = "body">
+		<div class="col-sm-4">
+		</div>
+
+		<div class = "col-sm-4">
+			<a href = "#/blog/introduction"><center><h1><b>ABOUT GIS</b></h1></a>
+
+			<hr>
+
+			<br>
+			<p class = "lead">Learn more about what GIS is and how we can use it to solve real world issues from monitoring human health risks to detecting land cover disturbances.</p></center>
+		</div>
+
+		<div class="col-sm-4">
+		</div>
+	</div>
+</div>
+
+<div ng-include src="'/partials/gisuse.html'"></div>
+
+<!--major thumbnails, links to tutorials-->
+
+<div class="row top-padding bottom-margin">
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <img src="images/python.png" alt="python">
+      <div class="caption">
+        <h3><b>Python Tutorial</b></h3>
+        <p><h4>Want to handle bulk data? Learn basic skills about data acquisition, data processing, and analysis using common libraries such as arcpy, numpy, scipy, and seaborn.
+        </h4></p>
+        <p><a href="#/blog/pythonTutorial" class="btn btn-primary" role="Button">Explore Python</a> </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <img src="images/TOA/L05_IMG/1999/L05_1999_RGB_TOA_rsz.png" alt="GIS">
+      <div class="caption">
+        <h3><b>GIS Tutorial</b></h3>
+        <p><h4>What's the difference between supervized and unsupervized classification? Learn it here! Find out about cool spatial analysis and geoprocessing tools on softwares such as ENVI and ArcGIS. </h4></p>
+        <p><a href="#/blog/GISTutorial" class="btn btn-primary" role="Button">Explore GIS</a> </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="thumbnail">
+      <img src="images/rsz_sargassum.jpg" alt="projectimg">
+      <div class="caption">
+        <h3><b>Project Highlights</b></h3>
+        <p><h4>Read about projects that utilize geographical information systems to spatially analyze data. Might help you spark new ideas for your next big project!</h4></p>
+        <p><a href="#/blog/projects" class="btn btn-primary" role="Button">Explore Projects</a> </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

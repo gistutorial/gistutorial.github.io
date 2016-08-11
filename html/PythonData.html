@@ -1,0 +1,152 @@
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+	<div class = "container">
+		<div class = "row top-padding" id = "link_top">
+	  	<nav class="col-sm-3" id="myScrollspy">
+	        <ul class="nav nav-pills nav-stacked">
+	        	<div class = "panel-group">
+		        	<div class="panel-heading">
+		        		<h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/PythonData#collapse1" class="list-group-item active">Data Management</a>
+					     </h1>
+					     <div id="collapse1" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonData/python-data#python-data"><b>Introduction</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonData/python-data#import"><b>Import</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonData/python-data#transfer-data"><b>Transfer Data</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonData/python-data#for-loop"><b>For Loop</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonData/python-data#define-projection"><b>Define Projection</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonData/python-data#merge-files"><b>Merge Files</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonData/python-data#grouping-counting"><b>Grouping & Counting</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/PythonData/python-data#search-cursor"><b>Search Cursor</b></a></li>
+				        </ul>
+				        	
+	              			
+				    </div>
+	        		</div>
+			    </div>
+    		</ul>
+	     </nav>
+		<div class="col-sm-9"> <!-- begin page content -->	
+			<div class="top-padding" id="python-data">
+				<div class="row bottom-margin">
+					<div class="panel panel-default">
+					  <div class="panel-heading primary-color">
+					  	<h1>Data Management: Transfer, Merge, Group</h1>
+					  </div>
+					  <div class="panel-body">
+					 	<div class = "col-sm-8">
+					 		<p class = "lead"> An introductory script that will let you work with a handful of files, merge them into one using and group data according to intervals using: lists, for loops, if statements, and arcpy's search cursor. </p>
+					 	</div>
+					 	<div class = "col-sm-12" id = "import">
+					 		<br><br>
+		
+			 				<p class = "lead"> <h3>IMPORT:</h3> Arcpy library </p>
+							<code class="prettyprint"> 
+								import arcpy
+							</code>
+
+						</div>
+						<div class = "col-sm-12" id = "transfer-data">	
+							<br><br>
+							<p class = "lead"> <h3>TRANSFER DATA:</h3>Copy files from your R Drive (inpath) to S Drive (outpath). First Create a list of all the filenames you want to transfer so we can use it in a loop. </p>
+							<code class="prettyprint"> 
+								inpath = "R:/User/..." <br>
+								outpath = "S:/User/..." 
+							</code>
+
+							<code class="prettyprint"> 
+								<br>
+								RDriveList = [inpath + "filename1.shp", inpath + "filename2.shp", inpath + "filename3.shp"...] </code>
+
+							<p class = "lead"> Create an empty SDriveList Folder </p>
+							<code class="prettyprint"> 
+								#Create empty SDrivelist folder <br>
+								SDriveList = [] 
+							</code>
+						</div>
+						<div class = "col-sm-12" id = "for-loop">	
+							<br><br>
+							
+							<p class = "lead"> <h3>FOR LOOPS:</h3>Copy files from R Drive to S Drive and save files into a new list using append. </p>
+							<code class="prettyprint"> 
+								for index,f in enumerate(RDriveList): <br><br>
+									
+								&nbsp;&nbsp;&nbsp;&nbsp;# index number used to name new file  <br>     
+								&nbsp;&nbsp;&nbsp;&nbsp;path = outpath+str(index + 1)+".shp" <br><br>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;# append each file into list    <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;SDriveList.append(path)    <br><br>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;# copy each file in list to outpath    <br>                          
+								&nbsp;&nbsp;&nbsp;&nbsp;arcpy.CopyFeatures_management(f, path)
+							</code>
+						</div>
+						<div class = "col-sm-12" id = "define-projection">	
+							<br><br>
+
+							<p class = "lead"> <h3>DEFINE PROJECTION & FOR LOOPS:</h3> Define the projection using for each file in the list using a for loop.
+							<h4>PARAMETERS:</h4> DefineProjection_management (input dataset, coordinate system)</p>
+							<code class="prettyprint"> 
+								coordinateSystem = "GEOGCS['GCS_WGS_1984',DATUM['D_WGS_1984',SPHEROID <br>['WGS_1984',6378137.0,298.257223563]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]]"
+							</code>
+							<br>
+							<br>
+							<code class="prettyprint"> 
+								for i in SDriveList: <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;arcpy.DefineProjection_management(i, coordinateSystem)
+								</code>
+							</div>
+							<div class = "col-sm-12" id = "merge-files">	
+							<br><br>
+							
+							<p class="lead"> <h3>MERGE FILES:</h3> Merge all of the files into one single file using the list "SDriveList" you compiled in the previous step.
+							<h4>PARAMETERS:</h4>Merge_management(inputs, output, {field_mappings}) 	</p>	
+							<code class="prettyprint"> 
+								arcpy.Merge_management(SDriveList, outpath+"newMergedFile.shp")
+							</code>
+							</div>
+							<div class = "col-sm-12" id = "grouping-counting">	
+							<br><br>
+							
+							<p class="lead"><h3>GROUPING & COUNTING:</h3>Group the data, in this case by confidence interval values by counting from each row. Define empty variables to use later in loop </p>
+							<code class="prettyprint">
+								Group1 = 0 <br>
+								Group2 = 0 <br>
+								Group3 = 0 <br>
+							</code>
+						</div>
+						<div class = "col-sm-12" id = "search-cursor">	
+							<br><br>
+
+							<p class="lead"><h3>SEARCH CURSOR</h3>Use the Confidence "Conf" column to query files into 3 confidence interval levels. Define file as newly merged shapefile. 
+								<br><br>
+							<code class="prettyprint"> 
+								file = outpath + "newMergedFile.shp" <br><br>
+								rows = arcpy.SearchCursor(file)
+							</code>
+
+							<p class = "lead">Loop through each row in file to group CONF values into three classes </p>  
+  							<code class="prettyprint"> 
+  								for row in rows: <br><br>
+	
+								&nbsp;&nbsp;&nbsp;&nbsp;# Define "Value" as the value of confidence by using getValue()  <br> &nbsp;&nbsp;&nbsp;&nbsp;Value = int(row.getValue("CONF"))  <br><br>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;# Add 1 count into "Group 1" if "Conf" >85      <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;if Value > 85:  <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;Group1 += 1     <br><br>  
+
+								&nbsp;&nbsp;&nbsp;&nbsp;# Add 1 count into "Group 2" if "Conf" is in between 60 &85    <br>  
+								&nbsp;&nbsp;&nbsp;&nbsp;elif Value >= 60 and Value <=85:         <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;Group2 += 1 							<br><br>
+
+								&nbsp;&nbsp;&nbsp;&nbsp;# Add 1 count into "Group 3" if "Conf" < 60    <br>
+								&nbsp;&nbsp;&nbsp;&nbsp;elif Value < 60:                         		<br>
+								&nbsp;&nbsp;&nbsp;&nbsp;Group3 += 1 								<br>
+							  </code>
+					 	</div>
+					 </div>
+					 </div>
+					</div>
+					<div ng-include src="'/partials/backtotop.html'"></div>
+				</div>
+			</div>

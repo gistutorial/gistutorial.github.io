@@ -1,0 +1,263 @@
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+	<div class = "container">
+		<div class = "row top-padding" id = "link_top">
+	  	<nav class="col-sm-3" id="myScrollspy">
+	        <ul class="nav nav-pills nav-stacked">
+	        	<div class = "panel-group">
+		        	<div class="panel-heading">
+		        		<h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/RPlotting#collapse1" class="list-group-item active">Basic Plotting</a>
+					     </h1>
+					     <div id="collapse1" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<li><a class="text-black list-group-item" href="#/blog/RPlotting/r_plot_basics#basic-plot"><b>Basic Plot</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/RPlotting/r_plot_basics#Histograms"><b>Histograms</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/RPlotting/r_plot_basics#density-rel-freq"><b>Density Relative Frequency</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/RPlotting/r_plot_basics#stem-leaf"><b>Stem & Leaf</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/RPlotting/r_plot_basics#abs-freq"><b>Cumulative Abs. Frequency</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/RPlotting/r_plot_basics#rel-freq"><b>Cumulative Rel. Frequency</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/RPlotting/r_plot_basics#access-parameters"><b>Accessing Parameters</b></a></li>
+				        	
+				        </ul>
+				    </div>
+				    	<h1 class="panel-title">
+		        		<a data-toggle="collapse" href="#/blog/RPlotting#collapse2" class="list-group-item active">Multivariate Plotting</a>
+					     </h1>
+					     <div id="collapse2" class="panel-collapse collapsing">
+				        <ul class="list-group">
+				        	<li><a class="text-black list-group-item" href="#/blog/RPlotting/r_matplot_basics#basic-plot"><b>Using Basic Plot</b></a></li>
+				        	<li><a class="text-black list-group-item" href="#/blog/RPlotting/r_matplot_basics#mat-plot"><b>Using MatPlot</b></a></li>
+				        	
+				        </ul>
+				    	</div>
+	        		</div>
+			    </div>
+    		</ul>
+	     </nav>				
+
+
+
+
+
+
+
+			<div class="col-sm-9"> <!-- begin page content -->
+				<div class = "top-padding" id="r_plot_basics">
+					<div class = "row bottom-margin">
+						<div class="panel panel-default">
+					  		<div class="panel-heading primary-color">
+					  			<h1>Visualize Data: Basics of Plotting</h1>
+					  		</div>
+					  		<div class="panel-body">
+					  			<div class = "col-sm-6" id = "basic-plot">
+					  				<br><br>
+						  			<h3>BASIC PLOT:</h3>
+						  			<p class = "lead"> Learn more about plotting graphs with: 	
+						  			</p>
+						  			<code class = "prettyprint">
+						  				help(plot)
+						  			</code>
+						  			<br><br>
+						  			<h4> PARAMETERS: </h4>
+						  			<p class = "lead"> plot(x, y, type, main, sub, xlab, ylab, col...) <br><br>
+						  			Sample code written below using Atmospheric Carbon Dioxide data from Mauna Lao. <em>Results shown as graph at top right. Remember to see available datasets use "data()". </em>
+						  			</p>
+						  
+						  			<code class = "prettyprint">
+
+						  				data(co2) # load data <br><br>
+						  				plot(co2, type = "l", main = "Mauna Loa Atmospheric CO2 Concentration", xlab = "Year", ylab = "CO2 Concentration", col="blue")
+						  			</code>
+						  			<br><br>
+						  			<p class = "lead"> Can also plot by one or multiple variables, as shown below. <em>Results shown</em> </p>
+						  			
+						  			<code class = "prettyprint">
+						  				data(CO2) <br><br>
+						  				plot(CO2$Plant, CO2$uptake, xlab = "Plant ID", ylab = "CO2 Uptake")
+						  			</code>
+						  		</div>
+						  		<div class = "col-sm-6">
+						  			<div class="thumbnail">
+						  				<img src = "/images/plot_sample_1.jpeg" alt = "plot_sample">
+						  				<img src = "/images/plot_sample_2.jpeg" alt = "plot_sample">
+						  			</div>
+						  		</div>
+						  		<div class = "col-sm-12" id = "Histograms">
+						  			<br><br>
+						  			<h3>HISTOGRAMS:</h3>
+						  			<p class = "lead"> Show the frequency of data, while specifyiing breaks, and x limits. </p>
+						  			<code class = "prettyprint">
+						  				hist(CO2$uptake) # basic histogram <br><br>
+						  				hist(CO2$uptake, breaks = 8) #compare with: <br><br>
+						  				hist(CO2$uptake, breaks = 0:50) <br><br>
+						  				hist(CO2$uptake, br= c(0,10,20,30,40,50)) # define scale/interval <br><br>
+						  				hist(CO2$uptake, breaks = 10, xlim=c(20,40)) # define x limit 
+						  			</code>
+						  		</div>
+						  		<div class = "col-sm-12"> 
+						  			<div class = "thumbnail">
+						  				<img src = "/images/plot_sample_3.jpeg" alt = "plot_sample">
+						  			</div>
+						  		</div>
+						  		<div class = "col-sm-12" id = "density-rel-freq">
+						  			<br><br>
+						  			<h3> DENSITY: Relative Frequency</h3>
+						  			<code class = "prettyprint">
+						  				hist(CO2$uptake, freq=FALSE) <br>
+										hist_freq <-hist(CO2$uptake) <br>
+										plot(hist_freq$mids,100*hist_freq$counts/sum(hist_freq$counts), type="h")
+									</code>
+								</div>
+								<div class = "col-sm-12" id = "stem-leaf">
+									<br><br>
+									<h3>STEM & LEAF:</h3>
+									<p class = "lead">Shows distribution of numbers by tens, hundreths, etc. <em>Results shown  </em>
+									</p>
+									<code class = "prettyprint">
+										stem(CO2$uptake)
+									</code>
+								</div>
+								<div class = "col-sm-12"> 
+									<div class = "thumbnail">
+										<br><br>
+										<img src = "/images/plot_sample_4.png" alt = "plot_sample">
+									</div>
+								</div>
+								<div class = "col-sm-12" id = "abs-freq">
+									<br><br>
+
+									<h3>CUMULATIVE ABSOLUTE FREQUENCY:</h3>
+									<code class = "prettyprint">
+										plot(sort(CO2$uptake), 
+										(1:length(CO2$uptake)), 
+										type="s")
+									</code>
+								</div>
+								<div class = "col-sm-12" id = "rel-freq">
+									<br><br>
+									<h3>CUMULATIVE RELATIVE FREQUENCY:</h3>
+									<code class = "prettyprint">
+										plot(sort(CO2$uptake), 
+										(1:length(CO2$uptake))/length(CO2$uptake),type="s", ylim=c(0,1))
+									</code>
+									<br>
+									<br>
+									<p class = "lead">A simpler way to plot cumulative distribution is to use the "ecdf" function.		</p>							
+									<code class = "prettyprint">
+										plot(ecdf(CO2$uptake), do.points=F, verticals=T, main = "Cumulative Distribution")
+									</code>
+								</div>
+								<div class = "col-12-sm">
+									<div class = "thumbnail">
+										<br><br>
+										<img src = "/images/plot_summary_6.jpeg" alt = "plot_sample">
+									</div>
+								</div>
+								<div class = "col-sm-12">
+									<br>
+									<br>
+									<h3>PRETTIFY:</h3>
+									<code class = "prettyprint">
+										hist(CO2$uptake, axes=FALSE, plot=TRUE, main="", xlab="", ylab="") <br><br>
+
+										title(main="Histogram of CO2 Plant Uptake", col.main="blue", ylab="Frequency", xlab="CO2 Uptake", col.lab="red") 
+									</code>
+								</div>
+									<div class = "col-sm-12" id = "access-parameters">
+									<br><br>
+									<h3>ACCESSING PARAMETERS:</h3>
+									<p class = "lead">The current settings for the graphics page can be accessed using the "par" function. Once you change the setting, it will remain that way until you reset it. For example, change the number of graphs shown from one to two.
+									</p>
+									<code class = "prettyprint">
+										par()	# access current parameters <br><br>
+										par(mfrow=c(2,1)) # change the number of rows to two
+									</code>
+								</div>
+						  		</div>
+					  		</div>
+					  		<div ng-include src="'/partials/backtotop.html'"></div>
+					  	</div>
+					  	
+					 </div>
+				
+
+				 <div class = "top-padding" id="r_matplot_basics">
+					<div class = "row bottom-margin">
+						<div class="panel panel-default">
+					  		<div class="panel-heading primary-color">
+					  			<h1>Visualize Data: Plotting Multiple Datasets</h1>
+					  		</div>
+					  		<div class="panel-body">
+					  			<div class = "col-sm-12">
+						  			<div class = "thumbnail">
+							  			<img src = "/images/plot_sample_7.jpeg" alt = "plot_sample">
+							  		</div>
+							  	</div>
+					  			<div class = "col-sm-12" id = "basic-plot">
+					  				<br><br>
+						  			<h3>BASIC PLOT:</h3>
+						  			<p class = "lead">Plotting multiple datasets can be achieved with the basic plot() function like this: </p>
+						  			<code class = "prettyprint">
+						  				plot(data$X, data$Indonesia, "l", col="black", ylim = range(c(0,100))); <br>
+										par(new=TRUE); <br>
+										plot(data$X, data$Malaysia, "l", col="blue"); <br>
+										par(new=TRUE); <br>
+										plot(data$X, data$USA, "l", col="red"); <br>
+										par(new=TRUE); <br>
+										plot(data$X, data$India, "l", col = "lightblue") <br><br>
+
+										#OR like this: <br><br>
+
+										plot(data$X, data$Indonesia, "l", col="black", ylim=range(c(1:100))); <br>
+										lines(data$X, data$Malaysia, "l", col="blue"); <br>
+										lines(data$X, data$USA, "l", col="red"); <br>
+										lines(data$X, data$India, "l", col = "lightblue") <br>
+
+						  			</code>
+						  			<br><br>
+
+						  			<p class = "lead">However, instead of coding multiple lines, it is much easier and efficient to use matplot(). </p>
+						  			<hr width = 20%>
+						  		</div>
+						  		<div class = "col-sm-12" id = "mat-plot">
+						  			<br><br>
+						  			
+						  			<h3>MATPLOT: Step-by-Step</h3>
+						  			<p class = "lead">The example is created with the Urban Population data acquired from the World Health Organization. The data was manually cleaned and formatted to only reflect countries I was interested in analyzing. <br><br>
+						  			First Set directory using setwd("/directory/folder/...") function and assign variable "data" as the filename.csv<br><br>
+						  			
+						  			Data looks like this:</p> 
+						  				<div class = "thumbnail">
+						  					<img src = "/images/sample_urban_data.png" alt = "plot_sample">
+						  				</div>
+						  			<p class = "lead">Assign "x" and y" variables with each column for easier accessibility. </p>
+						  			<code class = "prettyprint">
+						  				x <- data$X <br>
+						  				y1 <- data$Indonesia <br>
+										y2 <- data$Malaysia <br>
+										y3 <- data$USA <br>
+										y4 <- data$Japan <br>
+										y5 <- data$Philippines <br>
+										y6 <- data$India <br>
+						  			</code>	
+						  			<br>
+						  			<br>
+						  			<p class = "lead">Use the matplot function using "cbind()" to account for multiple y values. Create a legend using the "legend" function specifying the location: "topleft", size: "cex=0.4", variables, and colors.</p>
+						  			
+						  			<code class = "prettyprint">
+						  				matplot(x, cbind(y1, y2, y3, y4, y5, y6), "l", xlab = "Year", ylab = "Urban Population (%)", main = "Urban Population Prediction from 1950-2050") <br><br>
+										legend("topleft", legend = c("Indonesia", "Malaysia", "USA", "Japan", "Philippines", "India"), col=c("black", "red", "green", "blue", "lightblue", "pink"), lty=1:2, cex=0.4)
+						  			</code>
+						  		</div>
+						  	</div>
+						  	</div>
+						  	 <div ng-include src="'/partials/backtotop.html'"></div>
+						  </div>
+						 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>

@@ -1,0 +1,573 @@
+a{
+  color: #2f4f4f;
+}
+
+pre{
+  border: 0px !important;
+  padding: 16px !important;
+  font-size: 16px;
+}
+
+
+/*change navbar color*/
+/* navbar */
+.navbar-custom {
+    background-color: #2f4f4f;
+    border-color: #E7E7E7;
+    min-height: 80px;
+
+}
+/* title */
+.navbar-custom .navbar-brand {
+    color: #fff;
+    margin-top: 15px;
+    font-size: 20px;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+    color: #5E5E5E;
+
+}
+/* link */
+.navbar-custom .navbar-nav > li > a {
+    color: #fff;
+    margin-top: 15px;
+}
+
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+    color: #333;
+}
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+    color: #555;
+    background-color: #E7E7E7;
+}
+.navbar-custom .navbar-nav > .open > a,
+.navbar-custom .navbar-nav > .open > a:hover,
+.navbar-custom .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #D5D5D5;
+}
+/* caret */
+.navbar-custom .navbar-nav > .dropdown > a .caret {
+    border-top-color: #777;
+    border-bottom-color: #777;
+}
+.navbar-custom .navbar-nav > .dropdown > a:hover .caret,
+.navbar-custom .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #333;
+    border-bottom-color: #333;
+}
+.navbar-custom .navbar-nav > .open > a .caret,
+.navbar-custom .navbar-nav > .open > a:hover .caret,
+.navbar-custom .navbar-nav > .open > a:focus .caret {
+    border-top-color: #555;
+    border-bottom-color: #555;
+}
+/* mobile version */
+.navbar-custom .navbar-toggle {
+    border-color: #DDD;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+    background-color: #DDD;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+    background-color: #CCC;
+}
+@media (max-width: 767px) {
+    .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+        color: #777;
+    }
+    .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #333;
+    }
+}
+
+.nav > li.dropdown.open { position: static; }
+.nav > li.dropdown.open .dropdown-menu {
+  display: inline-block;
+  width: 100%;
+  /*text-align: center; */
+  left:0;
+  right:0;
+  padding-top: 15px;
+}
+.dropdown-menu>li { display: table-cell; }
+
+.nav > li{
+  font-size: 20px !important;
+}
+
+
+
+
+/*******************/
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body{
+  position: relative;
+}
+
+body > .container {
+  padding: 60px 15px 0;
+  position: relative !important;
+}
+
+.fullbackgroundimage{
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+
+  background: url(/images/tokyo.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.white-text{
+	color: #f2f2f2;
+  font-family: 'Josefin Slab', serif;;
+}
+
+/* for making full size image on the home page*/
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.primary-color{
+background-color: #d8d8d8 !important;
+
+}
+
+.btn-primary{
+  background: #2f4f4f;
+  border: 0px
+}
+.btn-primary:hover {
+  background: #5E5E5E;
+}
+
+.image {
+    position:relative;
+}
+.image .text {
+    position:absolute;
+    top:60px;
+    left:380px;
+    width:400px;
+}
+
+* {
+    font-family: 'Josefin Slab', serif;
+  }
+
+
+/**/
+hr{
+  border-top: 2px solid #2f4f4f;
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 800px;
+  margin-bottom: 80px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 5px;
+  padding-bottom: 200px;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 800px;
+  background-color: #777;
+}
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 800px;
+}
+
+/*Responsive css*/
+@media (max-width: 768px) {
+  .navbar-custom a {
+    color: #fff;
+  }
+
+  /* Navbar positioning foo */
+  .navbar-wrapper {
+    margin-top: 20px;
+  }
+  .navbar-wrapper .container {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .navbar-wrapper .navbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* The navbar becomes detached from the top, so we round the corners */
+  .navbar-wrapper .navbar {
+    border-radius: 4px;
+  }
+
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 20px;
+    font-size: 23px;
+    line-height: 1.4;
+  }
+
+  .featurette-heading {
+    font-size: 60px;
+  }
+}
+
+.heading-caption {
+    margin-bottom: 20px;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+
+
+/* Featurettes ------------------------- */
+
+.featurette-divider {
+  margin: 80px 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+/*---------------------footer styling--------------------------*/
+/*website main color*/
+footer{
+  background-color: #293034;
+  border-color: #E7E7E7;
+  color: #fff;
+  padding: 20px 0px;
+}
+
+/*-------------------custom classes -------------------------*/
+.no-border{
+  border: 0px;
+  padding: 0px;
+}
+
+.top-padding{
+  padding-top: 100px;
+}
+
+.bottom-margin{
+  margin-bottom: 100px;
+}
+
+.text-black{
+  color: #000;
+}
+
+/*-------------------banners ---------------------------------*/
+.gistutorialbanner{
+  padding-top: 60px;
+  color: #000;
+  background: url(/images/cover9.JPG) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:600px;
+}
+
+.gissubbanner{
+  padding-top: 60px;
+  color: #000;
+  background: url(/images/cover9.JPG) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:300px;
+
+  }
+
+.pythontutorialbanner{
+  padding-top: 60px;
+  color: #000;
+  background: url(/images/cover9.JPG) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:600px;
+}
+
+.introductionbanner{
+  padding-top: 60px;
+  color: #000;
+  background: url(/images/cover10.JPG) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:800px;
+}
+
+.projectbanner{
+  padding-top: 60px;
+  color: #000;
+  background: url(/images/project_banner.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height:850px;
+}
+
+/*-----Project Gallery Hover Image ------*/
+
+.project img{
+  opacity: .9;
+  position: relative;
+  width: 555px;
+  height: 400px;
+}
+.project p{
+  color:#fff;
+  font-weight: 100;
+
+}
+
+.project:after {
+    content: '\A';
+    position: absolute;;
+    width: 100%; height:100%;
+    top:0; left:5;
+    background:#000;
+    opacity: 0;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+}
+
+.project:hover:after {
+    opacity: .5;
+}
+
+
+.no-gutter > [class*=col-] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.imgWrap {
+  position: relative;
+  height: 400px;
+  width: 600px;
+}
+
+
+a.imgDescription {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  background: rgba(115, 211, 190,.8);
+  -webkit-transition: all .35s;
+  -moz-transition: all .35s;
+  transition: all .35s;
+
+
+  visibility: hidden;
+  opacity: 1;
+
+  -webkit-transition: visibility opacity 0.2s;
+}
+
+
+.imgWrap:hover .imgDescription {
+  visibility: visible;
+  opacity: 100%;
+}
+
+.imgOpacity {
+  opacity: 0.8;
+  filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+/*------Button Circle Arrow Down Intro ---*/
+
+.btn-circle {
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    padding: 7px 16px;
+    border: 2px solid #fff;
+    border-radius: 100%!important;
+    font-size: 40px;
+    color: #fff;
+    background: 0 0;
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.btn-circle:hover,
+.btn-circle:focus {
+    outline: 0;
+    color: #fff;
+    background: rgba(255,255,255,.1);
+}
+
+.btn-circle i.animated {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+}
+
+.btn-circle:hover i.animated {
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+}
+
+.btn {
+    border-radius: 0;
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.btn-default {
+    border: 1px solid #42dca3;
+    color: #42dca3;
+    background-color: transparent;
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    border: 1px solid #42dca3;
+    outline: 0;
+    color: #000;
+    background-color: #42dca3;
+}
+
+/* HOME PAGE HEADING */
+
+.home-heading {
+    font-size: 100px;
+    color: #ffffff;
+  }
+
+
+ /* Back to Top Arrow */
+
+.back-to-top {
+  position: fixed;
+  z-index: 999;
+  right: 20px;
+  bottom: 20px;
+  background-color: #73d3be;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+
+/* Side nav header */
+
+.active {
+  background-color: #9fdacd !important;
+  border-color: #9fdacd !important;
+}
+
+.search-btn {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.search-btn-default {
+    border: 1px solid #f2f2f2;
+    color: #000;
+    background-color: #f2f2f2;
+}
+
+/* Fixed Navigation Sidebar*/
+
+ul.nav-pills {
+      top: 92px;
+      position: fixed;
+  }
+
+
+.logo{
+  letter-spacing: 5px;
+}
+
+/* Thumbail */
+.thumbnail {
+border-width: 0px;
+}
+
+.gallery img{
+  opacity: 0.90;
+  position: relative;
+  width: 500px;
+  height: 400px;
+}
